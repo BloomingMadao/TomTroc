@@ -14,7 +14,7 @@ spl_autoload_register(function($className) {
 
     // On va voir dans le dossier Model si la classe existe.
     if (file_exists('src/models/' . $className . '.php')) {
-        require_once 'models/' . $className . '.php';
+        require_once 'src/models/' . $className . '.php';
     }
 
     // On va voir dans le dossier Controller si la classe existe.
