@@ -12,6 +12,23 @@ try {
             $bookController = new BooksController();
             $bookController->showHome();
             break;
+
+        case 'connectUserForm':
+            $userController = new UsersController();
+            $userController->connectForm();
+            break;
+
+        case 'registerForm':
+            $userController = new UsersController();
+            $userController->registerForm();
+            break;
+
+        case 'addUser':
+            $userController = new UsersController();
+            $userController->addUser();
+            break;
+
+
         
         default:
             throw new Exception("La page demandée n'existe pas.");
