@@ -2,17 +2,25 @@
 
 class User 
 {
-    private int $id;
+    private ?int $id;
     private string $username;
     private string $password;
     private string $mail;
+
+    public function __construct (?int $id, string $username,string $mail, string $password)
+    {
+        $this->setId($id);
+        $this->setUsername($username);
+        $this->setMail($mail);
+        $this->setPassword($password);
+    }
 
     public function getId() :int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : void 
+    public function setId(?int $id) : void 
     {
         $this->id=$id;
     }
