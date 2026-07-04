@@ -8,6 +8,7 @@ $action = Utils::request('action','home');
 
 try {
     switch ($action) {
+
         case 'home':
             $bookController = new BooksController();
             $bookController->showHome();
@@ -17,7 +18,12 @@ try {
             $userController = new UsersController();
             $userController->connectForm();
             break;
-
+        
+        case 'connectUser':
+            $userController = new UsersController();
+            $userController->connectUser();
+            break;
+            
         case 'registerForm':
             $userController = new UsersController();
             $userController->registerForm();

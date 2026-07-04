@@ -30,11 +30,37 @@ class UsersController
         $userManager = new UserManager();
         $userManager->addUser($user);
 
-        // if(PDO PDOStatement){
-        //     Utils::redirect("validate");
-        // }else{
-        //     Utils::redirect("Error");
-        // }
+        Utils::redirect('home',['registerValidate' => "true"]);
 
+    }
+
+    public function connectUser():void
+    {
+        $mail=Utils::request('mail');
+        $password=Utils::request('password');
+        
+        if (empty($mail) || empty($password)) {
+            throw new Exception("Tous les champs sont obligatoires.");
+        }
+
+        $userManager = new UserManager();
+        $user=$userManager->getUserByMail($mail);
+
+        if (!$user) {
+            throw new Exception("L'utilisateur demandé n'existe pas.");
+        }
+
+        // On vérifie que le mot de passe est correct.
+        if (!password_verify($password, $user->getPassword())) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            throw new Exception("Le mot de passe est incorrect : $hash");
+        }
+
+        // On connecte l'utilisateur.
+        $_SESSION['user'] = $user;
+        $_SESSION['idUser'] = $user->getId();
+
+        // On redirige vers la page d'administration.
+        Utils::redirect("home");
     }
 }
