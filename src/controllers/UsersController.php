@@ -3,15 +3,26 @@
 // use PDO;
 class UsersController
 {
+
+    private function checkIfUserIsConnected(): void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("connectionForm");
+        }
+    }
+
     public function connectForm() : void 
     {
-        require('src/views/templates/connectionForm.php');
+        $view = new View("Connexion");
+        $view->render("connectionForm");
 
     }
 
     public function registerForm() :void
     {
-        require('src/views/templates/registerForm.php');
+        $view = new View("Inscription");
+        $view->render("registerForm");
     }
 
     public function addUser():void
@@ -63,4 +74,34 @@ class UsersController
         // On redirige vers la page d'administration.
         Utils::redirect("home");
     }
+
+    public function showUserProfile() : void
+    {
+        $this->checkIfUserIsConnected();
+        $idUser=$_SESSION['idUser'];
+        $userDetail=[];
+
+        $userManager=new UserManager();
+        $user=$userManager->getUserDetailById($idUser);
+        $userDetail[]=$user;
+
+        $bookManager = new BookManager();
+        $booksUser =  $bookManager->getAllBooksByUserId($idUser);
+
+
+        $view = new View("Profile");
+        $view->render("userProfile",['books'=>$booksUser,'userInfo'=>$user]);
+    }
+
+    public function disconnectUser():void
+    {
+        unset($_SESSION['user']);
+
+        Utils::redirect("home");
+    }
+
+
+
+
+
 }

@@ -23,7 +23,12 @@ try {
             $userController = new UsersController();
             $userController->connectUser();
             break;
-            
+
+        case 'disconnectUser':
+            $userController = new UsersController();
+            $userController->disconnectUser();
+            break;
+
         case 'registerForm':
             $userController = new UsersController();
             $userController->registerForm();
@@ -33,7 +38,11 @@ try {
             $userController = new UsersController();
             $userController->addUser();
             break;
-
+        
+        case 'userAccount' :
+            $userController = new UsersController();
+            $userController->showUserProfile();
+            break;
 
         
         default:

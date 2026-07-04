@@ -22,18 +22,20 @@
 <body>
     <header>
         <img src="#" alt="Logo Tomtroc">
-        <h1>TomTroc</h1>
+        <h1><a href="index.php?action=home">TomTroc</a></h1>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="index.php?action=home">Accueil</a></li>
                 <li><a href="#">Nos livre à l'échange</a></li>
                 <?php 
                     if(isset($_SESSION['user'])){
                         echo '<li><img src="#" alt="Logo messagerie"> <a href="#">Messagerie</a></li>';
-                        echo '<li><img src="#" alt="Logo utilisateur"> <a href="#">Mon Compte</a></li>';
+                        echo '<li><img src="#" alt="Logo utilisateur"> <a href="index.php?action=userAccount">Mon Compte</a></li>';
+                        echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
+                    }else{
+                        echo '<li><a href="index.php?action=connectUserForm">Connexion</a></li>';
                     }
                 ?>
-                <li><a href="index.php?action=connectUserForm">Connexion</a></li>
             </ul>
 
         </nav>

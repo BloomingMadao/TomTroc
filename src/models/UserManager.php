@@ -19,9 +19,6 @@ class UserManager
             'username' => $user -> getUsername()
         ]);
 
-        if($this->db){
-            echo 'ça fonctionne';
-        }
     }
 
     public function getUserByMail(string $mail) : ?User
@@ -32,7 +29,18 @@ class UserManager
         if ($user){
             return new User($user['id'],$user['username'],$user['mail'],$user['password']);
         }
-        var_dump($user);
+    }
+
+
+
+    public function getUserDetailById(int $id) : ?User
+    {
+        $sql = "SELECT u.* FROM users u  WHERE u.id = :id";
+        $result = $this->db->query($sql,['id' => $id]);
+        $user= $result-> fetch();
+        if ($user){
+            return new User($user['id'],$user['username'],$user['mail'],$user['password']);
+        }
     }
 
 
