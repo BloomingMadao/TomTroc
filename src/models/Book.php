@@ -6,6 +6,7 @@ class Book
     private int $idUser;
     private string $title;
     private string $author;
+    private string $resume;
     private ?DateTime $creationDate;
     private ?DateTime $updateDate;
     private ?bool $isEnable;
@@ -13,12 +14,13 @@ class Book
 
 
 
-    public function __construct(?int $id,int $idUser,string $title,string $author,string|DateTime $creationDate, string|DateTime $updateDate,bool|int $isEnable,string $urlImg)
+    public function __construct(?int $id,int $idUser,string $title,string $author,string $resume, string|DateTime $creationDate, string|DateTime $updateDate,bool|int $isEnable,string $urlImg)
     {
         $this->setId($id);
         $this->setIdUser($idUser);
         $this->setTitle($title);
         $this->setAuthor($author);
+        $this->setResume($resume);
         $this->setCreationDate($creationDate);
         $this->setUpdateDate($updateDate);
         $this->setIsEnable($isEnable);
@@ -64,6 +66,16 @@ class Book
     {
         $this->author=$author;
     }
+
+    public function getResume():string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(string $resume) : void
+    {
+        $this->resume=$resume;
+    } 
     
     public function getCreationDate() : DateTime
     {

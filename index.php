@@ -14,6 +14,16 @@ try {
             $bookController->showHome();
             break;
 
+        case 'addBookForm':
+            $bookController = new BooksController();
+            $bookController->addBookForm();
+            break;
+
+        case 'addBook':
+            $bookController = new BooksController();
+            $bookController->addBook();
+            break;
+
         case 'connectUserForm':
             $userController = new UsersController();
             $userController->connectForm();

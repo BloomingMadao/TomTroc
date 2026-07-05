@@ -17,4 +17,10 @@ class Utils {
     {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
+
+
+    public static function file(string $variableName, mixed $defaultValue = null) : mixed
+    {
+        return $_FILES[$variableName] ?? $defaultValue;
+    }
 }
