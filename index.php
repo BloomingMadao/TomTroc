@@ -77,6 +77,12 @@ try {
             $userController->showUserProfile();
             break;
 
+
+        case 'showAllConversations' : 
+            $conversationController = new ConversationsController();
+            $conversationController->showAllConversations();
+            break;
+
         
         default:
             throw new Exception("La page demandée n'existe pas.");

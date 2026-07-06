@@ -29,7 +29,7 @@
                 <li><a href="#">Nos livre à l'échange</a></li>
                 <?php 
                     if(isset($_SESSION['user'])){
-                        echo '<li><img src="#" alt="Logo messagerie"> <a href="#">Messagerie</a></li>';
+                        echo '<li><img src="#" alt="Logo messagerie"> <a href="index.php?action=showAllConversations">Messagerie</a></li>';
                         echo '<li><img src="#" alt="Logo utilisateur"> <a href="index.php?action=userAccount">Mon Compte</a></li>';
                         echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
                     }else{
