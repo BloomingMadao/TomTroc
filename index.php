@@ -18,6 +18,10 @@ try {
             $bookController->showHome();
             break;
 
+        case 'allBooks':
+            $bookController = new BooksController();
+            $bookController->showAllBooks();
+            break;
 
         /**
          * Gestion Livre

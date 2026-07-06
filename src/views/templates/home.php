@@ -23,7 +23,7 @@
     <h2>Les derniers livres ajoutés</h2>
     <?php foreach($books as $book) { ?>
         <article>
-            <img src="<?=$book->getUrlImg(); ?>" alt="Image <?=$book->getTitle(); ?>">
+            <img src="<?=$book->getUrlImg(); ?>" alt="Image <?=$book->getTitle(); ?>" width="250">
             <h2></h2>
         </article>
     <?php } ?>

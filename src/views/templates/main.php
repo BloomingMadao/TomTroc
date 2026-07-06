@@ -26,7 +26,7 @@
         <nav>
             <ul>
                 <li><a href="index.php?action=home">Accueil</a></li>
-                <li><a href="#">Nos livre à l'échange</a></li>
+                <li><a href="index.php?action=allBooks">Nos livre à l'échange</a></li>
                 <?php 
                     if(isset($_SESSION['user'])){
                         echo '<li><img src="#" alt="Logo messagerie"> <a href="#">Messagerie</a></li>';

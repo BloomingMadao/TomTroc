@@ -7,10 +7,20 @@ class BooksController
     {
 
         $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks();
+        $books = $bookManager->getAllBooks(); //getLastBooks() les 5 derniers livres ajoutés
 
         $view = new View("Accueil");
         $view->render("home", ['books' => $books]);
+    }
+
+    public function showAllBooks() : void 
+    {
+        $bookManager = new BookManager();
+        $books = $bookManager->getAllBooks();
+
+        $view = new View("Nos livre à l'échange");
+        $view->render("allBook",['books'=>$books]);
+
     }
 
     public function addBookForm(): void
