@@ -41,7 +41,6 @@ class UserManager
         if ($user){
             return new User($user['id'],$user['username'],$user['mail'],$user['password']);
         }
-        return null;
     }
 
 

@@ -33,28 +33,28 @@ $success = Utils::request('success');
 <a href="index.php?action=addBookForm">Ajouter un livre</a>
 <hr>
 <div class="bookList">
-    <table style="border:1px solid black;border-collapse: collapse;">
-        <thead style="border:1px solid black;border-collapse: collapse;">
-            <th style="border:1px solid black;">Photo</th>
-            <th style="border:1px solid black;">Titre</th>
-            <th style="border:1px solid black;">Auteur</th>
-            <th style="border:1px solid black;">Resumé</th>
-            <th style="border:1px solid black;">Disponibilité</th>
-            <th style="border:1px solid black;">Action</th>
+    <table>
+        <thead>
+            <th>Photo</th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Resumé</th>
+            <th>Disponibilité</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <?php foreach ($books as $book) { ?>
                 <tr>
-                    <td style="width: 16em;border:1px solid black;border-collapse: collapse;"><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
-                    <td style="width: 16em;border:1px solid black;border-collapse: collapse;"><?= $book->getTitle(); ?></td>
-                    <td style="width: 16em;border:1px solid black;border-collapse: collapse;"><?= $book->getAuthor(); ?></td>
-                    <td style="width: 16em;border:1px solid black;border-collapse: collapse;"><?= $book->getResume(); ?></td>
-                    <td style="width: 16em;border:1px solid black;border-collapse: collapse;"><?php if ($book->getIsEnable()) {
+                    <td style="width: 16em;"><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
+                    <td style="width: 16em;"><?= $book->getTitle(); ?></td>
+                    <td style="width: 16em;"><?= $book->getAuthor(); ?></td>
+                    <td style="width: 16em;"><?= $book->getResume(); ?></td>
+                    <td style="width: 16em;"><?php if ($book->getIsEnable()) {
                             echo 'disponible';
                         } else {
                             echo 'non-disponible';
                         } ?></td>
-                    <td style="width: 16em;border:1px solid black;border-collapse: collapse;">
+                    <td style="width: 16em;">
                         <nav>
                             <ul>
                                 <li><a href="index.php?action=editBookForm&idBook=<?= $book->getId(); ?>">Editer</a></li>
