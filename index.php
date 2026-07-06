@@ -9,21 +9,44 @@ $action = Utils::request('action','home');
 try {
     switch ($action) {
 
+
+        /**
+         * Page d'accueil
+         */
         case 'home':
             $bookController = new BooksController();
             $bookController->showHome();
             break;
 
+
+        /**
+         * Gestion Livre
+         */
         case 'addBookForm':
             $bookController = new BooksController();
             $bookController->addBookForm();
             break;
 
-        case 'addBook':
+        case 'updateBook':
             $bookController = new BooksController();
-            $bookController->addBook();
+            $bookController->updateBook();
             break;
 
+        case 'editBookForm':
+            $bookController = new BooksController();
+            $bookController->editBookForm();
+            break;
+
+        case 'deleteBook':
+            $bookController = new BooksController();
+            $bookController->deleteBook();
+            break;
+
+
+
+        /**
+         * Gestion Utilisateurs
+         */
         case 'connectUserForm':
             $userController = new UsersController();
             $userController->connectForm();
@@ -59,5 +82,5 @@ try {
             throw new Exception("La page demandée n'existe pas.");
     }
 } catch (Exception $e) {
-    //throw $th;
+    echo "Erreur : " . $e->getMessage();
 }

@@ -1,3 +1,14 @@
+<?php 
+/**
+ * 
+ */
+$success = Utils::request('success');
+?>
+
+<?php if ($success==1): ?>
+    <script>alert("<?= Utils::request('message') ?>")</script>
+<?php endif ?>
+
 <div class="userInfo">
     <h2>Mon Compte</h2>
     <h3><?= $userInfo->getUsername(); ?></h3>
@@ -33,18 +44,26 @@
         </thead>
         <tbody>
             <?php foreach ($books as $book) { ?>
-            <tr>
-                <td><img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
-                <td><?= $book->getTitle(); ?></td>
-                <td><?= $book->getAuthor(); ?></td>
-                <td><?= $book->getResume(); ?></td>
-                <td><?php if ($book->getIsEnable()) {
-                        echo 'disponible';
-                    } else {
-                        echo 'non-disponible';
-                    } ?></td>
-                <td><a href="#">Editer</a> <a href="">Suppimer</a></td>
-            </tr>
+                <tr>
+                    <td style="width: 16em;"><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
+                    <td style="width: 16em;"><?= $book->getTitle(); ?></td>
+                    <td style="width: 16em;"><?= $book->getAuthor(); ?></td>
+                    <td style="width: 16em;"><?= $book->getResume(); ?></td>
+                    <td style="width: 16em;"><?php if ($book->getIsEnable()) {
+                            echo 'disponible';
+                        } else {
+                            echo 'non-disponible';
+                        } ?></td>
+                    <td style="width: 16em;">
+                        <nav>
+                            <ul>
+                                <li><a href="index.php?action=editBookForm&idBook=<?= $book->getId(); ?>">Editer</a></li>
+                                <li><a href="index.php?action=deleteBook&idBook=<?= $book->getId(); ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a></li>
+                            </ul>
+
+                        </nav>
+                    </td>
+                </tr>
             <?php } ?>
 
         </tbody>

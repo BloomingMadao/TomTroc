@@ -2,7 +2,7 @@
 
 class Book
 {
-    private ?int $id;
+    private ?int $id = -1;
     private int $idUser;
     private string $title;
     private string $author;
