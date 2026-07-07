@@ -15,7 +15,7 @@
 <div>
     <h2>Rejoignez nos lecteurs passionnés</h2>
     <p>Donnez une nouvelle vie à vos livre en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
-    <button><a href="index.php?action=showAllBooks">Découvrir</a></button>
+    <button><a href="index.php?action=allBooks">Découvrir</a></button>
     <img src="#" alt="photo pile de livres">
 </div>
 <hr>
@@ -27,7 +27,7 @@
             <h2></h2>
         </article>
     <?php } ?>
-    <button><a href="">Voir tous les livres</a></button>
+    <button><a href="index.php?action=allBooks">Voir tous les livres</a></button>
 </div>
 <hr>
 <div>
@@ -37,7 +37,7 @@
     <div>Ajoutez les livres que vous souhaitez &eacute;changer à votre profil.</div>
     <div>Parcourez les livres disponibles chez d&rsquo;autres membres.</div>
     <div>Proposez un &eacute;change et discutez avec d&rsquo;autres passionn&eacute;s de lecture.</div>
-    <button><a href="">Voir tous les livres</a></button>  
+    <button><a href="index.php?action=allBooks">Voir tous les livres</a></button>  
 </div>
 <hr>
 <div>
