@@ -1,0 +1,13 @@
+.bookList{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.bookList table {
+  border-collapse: collapse;
+}
+
+.bookList th,
+.bookList td {
+  border: 1px solid #333;
+  padding: 6px 10px;
+}
