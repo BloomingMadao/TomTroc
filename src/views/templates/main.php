@@ -7,6 +7,8 @@
  *      $title string : le titre de la page.
  *      $content string : le contenu de la page. 
  */
+
+$action=Utils::request("action","");
 ?>
 
 
@@ -22,24 +24,40 @@
 
 <body>
     <header>
-        <img src="#" alt="Logo Tomtroc">
-        <h1><a href="index.php?action=home">TomTroc</a></h1>
-        <nav>
-            <ul>
-                <li><a href="index.php?action=home">Accueil</a></li>
-                <li><a href="index.php?action=allBooks">Nos livre à l'échange</a></li>
-                <?php 
-                    if(isset($_SESSION['user'])){
-                        echo '<li><img src="#" alt="Logo messagerie"> <a href="#">Messagerie</a></li>';
-                        echo '<li><img src="#" alt="Logo utilisateur"> <a href="index.php?action=userAccount">Mon Compte</a></li>';
-                        echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
-                    }else{
-                        echo '<li><a href="index.php?action=connectUserForm">Connexion</a></li>';
-                    }
-                ?>
-            </ul>
+        <div id="logo">
+            <a href="index.php?action=home"><img src="src/img/config/logo.png" alt="Logo Tomtroc"></a>
+        </div>
 
-        </nav>
+        <div id="navbar">
+            <nav>
+                <div id="nav-left">
+                    <ul>
+
+                        <li><a href="index.php?action=home" class="<?= $action === 'home' ? 'active':''?>">Accueil</a></li>
+                        <li><a href="index.php?action=allBooks" class="<?= $action === 'allBooks' ? 'active':''?>">Nos livre à l'échange</a></li>
+
+                    </ul>
+                </div>
+
+                <div id="nav-right">
+                    <ul>
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                            echo '<li><img src="#" alt="Logo messagerie"> <a href="#">Messagerie</a></li>';
+                            echo '<li><img src="#" alt="Logo utilisateur"> <a href="index.php?action=userAccount" class="' . ($action === "userAccount" ? 'active' : '') . '">Mon Compte</a></li>';
+                            echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
+                        } else {
+                            echo '<li><a href="index.php?action=connectUserForm" class="'.($action === "connectUserForm" || $action ==="registerForm"?'active':'').'">Connexion</a></li>';
+                        }
+                        ?>
+                    </ul>
+
+                </div>
+
+            </nav>
+
+        </div>
+
     </header>
 
     <main>
@@ -50,7 +68,7 @@
         <p>
             Tom Troc©
         </p>
-        <img src="" alt="Logo Tomtroc">
+        <img src="src/img/config/logo-simple.png" alt="Logo Tomtroc">
     </footer>
 </body>
 

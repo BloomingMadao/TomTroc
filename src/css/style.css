@@ -1,6 +1,403 @@
-.bookList{
-    margin-left: 5%;
-    margin-right: 5%;
+/**General*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 15px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display";
+  font-style: normal;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 400;
+  color: #000000;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #4e4e4e;
+}
+
+a:hover {
+  color: #000000;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00ac66;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  height: 63px;
+  width: 152px;
+  font-size: 16px;
+  font-weight: 600;
+  border: solid 1px #00ac66;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f3ef;
+  color: #00ac66;
+  border-radius: 10px;
+  text-decoration: none;
+  height: 63px;
+  width: 152px;
+  font-size: 16px;
+  font-weight: 600;
+  border: solid 1px #00ac66;
+}
+
+.btn-secondary:hover {
+  background-color: #006d41;
+  color: #ffffff;
+}
+
+.btn:hover {
+  background-color: #006d41;
+  color: #ffffff;
+}
+
+/**General : Books Card*/
+.books {
+  display: flex;
+  gap: 10px;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.books .container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 200px;
+  height: 324px;
+}
+
+.books img {
+  width: 100%;
+  height: 200px;
+}
+
+.books p.title {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.books p.author {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+
+.books p.seller {
+  font-size: 10px;
+  font-weight: 400;
+  font-style: italic;
+  height: 15px;
+  color: #a6a6a6;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/**Navbar*/
+header {
+  font-size: 14px;
+  font-weight: 400;
+  position: static;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 40px;
+  background-color: #f5f3ef;
+}
+
+#logo {
+  display: flex;
+  order: 1;
+}
+
+#logo img {
+  height: 51px;
+  width: 155px;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  order: 2;
+}
+
+#navbar .active {
+  color: #000000;
+  font-weight: bold;
+}
+
+#navbar nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#nav-left {
+  display: flex;
+  gap: 20px;
+  margin-left: 10px;
+}
+
+#nav-left ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  margin-left: auto;
+}
+
+#nav-right ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#nav-right li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/**HomePage*/
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 702px;
+}
+
+.content:nth-of-type(even) {
+  background-color: #f5f3ef;
+}
+
+.content:nth-of-type(odd) {
+  background-color: #faf9f7;
+}
+
+
+/**HomePage : presentation*/
+.content .presentation{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.content .presentation{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+.content .presentation .text-bloc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 329px;
+}
+
+.content .presentation .text-bloc h2{
+
+  align-self: flex-start;
+}
+
+.content .presentation .text-bloc p{
+  font-weight: 300;
+  font-style: light;
+  font-size: 16px;
+  align-self: center;
+  padding: 16px 8px;
+}
+
+.content .presentation .text-bloc .btn{
+  padding: 22px 0;
+  align-self: flex-start;
+}
+
+.content .presentation .img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 25%;
+  width: 25%;
+  
+}
+
+.content .presentation .img img{
+
+  height: 539px;
+  width: 404px;
+  
+}
+
+
+/**HomePage : lastBoolk list*/
+.content .lastBookList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.content .lastBookList .books {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.content .lastBookList h2 {
+  font-size: 32px;
+  font-weight: 400;
+  font-style: regular;
+}
+
+
+
+/**HomePage : explantation*/
+
+.content .explanation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: auto;
+  gap: 30px;
+  height: auto
+}
+
+.content .explanation h2{
+    font-size: 32px;
+  font-weight: 400;
+  font-style: regular;
+  margin-bottom: 15px;
+}
+
+.content .explanation p{
+  margin-bottom: 40px;   /* espace p → cartes, plus grand */
+}
+
+
+.content .explanation .steps{
+  display: flex;
+  flex-direction: row;   /* ⬅ corrigé : row au lieu de column, pour les mettre côte à côte */
+  gap: 20px;              /* espace entre chaque étape */
+}
+.content .explanation .steps .container{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  width: 215px;
+  height: 139px;
+  border-radius: 10px;
+}
+
+.content .explanation .steps .container p{   
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+
+
+/**Homepage : Values*/
+.content .values{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: auto;
+  gap: 30px;
+  height: auto
+}
+
+.content .values #imgSeparate{
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+.content .values #heart{
+  align-self: flex-end;
+  
+}
+
+.content .values h2{
+  justify-content: center;
+  align-items: center;
+    font-size: 32px;
+  font-weight: 400;
+  font-style: regular;
+  margin-bottom: 15px;
+}
+
+.content .values .text-bloc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  width: 25%;
+  text-align: justify;
+}
+
+.content .values .signature{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 92px;
+}
+
+
+
+
+
+
+/**Booktable User account*/
+.bookList {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .bookList table {
   border-collapse: collapse;
@@ -10,4 +407,57 @@
 .bookList td {
   border: 1px solid #333;
   padding: 6px 10px;
+}
+
+/**All book list*/
+
+.allBookList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 860px;
+}
+
+.allBookList .heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+  width: 100%;
+}
+
+.allBookList .heading input {
+  height: 50px;
+  width: 322px;
+}
+
+.allBookList .books {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 860px;   /* ⬅ la clé */
+}
+
+.allBookList .books .container{
+  width: 200px;
+  height: 324px;
+  flex: 0 0 auto;
+}
+
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  height: auto;
+  background-color: red;
+  color: white;
+  text-align: center;
+  position: static;
 }
