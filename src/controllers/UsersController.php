@@ -93,6 +93,23 @@ class UsersController
         $view->render("userProfile",['books'=>$booksUser,'userInfo'=>$user]);
     }
 
+   public function showUserProfileById() : void
+    {
+        $idUser=Utils::request("id");
+        $userDetail=[];
+
+        $userManager=new UserManager();
+        $user=$userManager->getUserDetailById($idUser);
+        $userDetail[]=$user;
+
+        $bookManager = new BookManager();
+        $booksUser =  $bookManager->getAllBooksByUserId($idUser);
+
+
+        $view = new View("Profile");
+        $view->render("publicUserProfile",['books'=>$booksUser,'userInfo'=>$user]);
+    }
+
     public function disconnectUser():void
     {
         unset($_SESSION['user']);

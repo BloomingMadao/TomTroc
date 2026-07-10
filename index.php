@@ -87,6 +87,11 @@ try {
             $userController->showUserProfile();
             break;
 
+        case 'showUserProfile' :
+            $userController = new UsersController();
+            $userController->showUserProfileById();
+            break;
+
         
         default:
             throw new Exception("La page demandée n'existe pas.");

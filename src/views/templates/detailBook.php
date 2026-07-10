@@ -18,7 +18,15 @@
                 <h3>description</h3>
                 <p class="description"><?= $book->getResume(); ?></p>
                 <h3>propriétaire</h3>
-                <p class="seller"><?= $book->getUsername(); ?> </p>
+                <a href="index.php?action=showUserProfile&id=<?= $book->getIdUser() ?>">
+                    <div class="userProfileCards">
+                        <div class="round">
+                            <img src="#" alt="" class="round">
+                        </div>
+                        <p><?= $book->getUsername(); ?></p>
+                    </div>
+                </a>
+
                 <a href="index.php?action=getOrCreateConversation&id=<?= $book->getId(); ?>&id_seller=<?= $book->getIdUser(); ?>" class="btn">Envoyer un message</a>
             </div>
         </div>
