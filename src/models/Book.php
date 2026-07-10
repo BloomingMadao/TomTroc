@@ -11,10 +11,11 @@ class Book
     private ?DateTime $updateDate;
     private ?bool $isEnable;
     private string $urlImg;
+    private ?string $username;
 
 
 
-    public function __construct(?int $id,int $idUser,string $title,string $author,string $resume, string|DateTime $creationDate, string|DateTime $updateDate,bool|int $isEnable,string $urlImg)
+    public function __construct(?int $id,int $idUser,string $title,string $author,string $resume, string|DateTime $creationDate, string|DateTime $updateDate,bool|int $isEnable,string $urlImg,?string $username)
     {
         $this->setId($id);
         $this->setIdUser($idUser);
@@ -25,6 +26,7 @@ class Book
         $this->setUpdateDate($updateDate);
         $this->setIsEnable($isEnable);
         $this->setUrlImg($urlImg);
+        $this->setUsername($username);
     }
 
     public function getId(): int
@@ -127,5 +129,15 @@ class Book
     public function setUrlImg(string $urlImg):void
     {
         $this->urlImg=$urlImg;
+    }
+
+    public function getUsername():string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(?string $username) :void
+    {
+        $this->username=$username;
     }
 }

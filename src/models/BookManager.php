@@ -26,10 +26,36 @@ class BookManager
                 $book['date_create'],
                 $book['date_update'],
                 $book['is_enable'],
-                $book['url_img']);
+                $book['url_img'],null);
         }
         return $books;
     }
+
+    public function getBookById(int $id) : ?Book
+    {
+        $sql="SELECT b.*, u.username from books b INNER JOIN users u on b.id_user=u.id WHERE b.id=:id";
+        $result=$this->db->query($sql,[
+            'id'=>$id,
+        ]);
+        $aBook=$result->fetch();
+        if($aBook){
+        $book = new Book(
+                $aBook['id'],
+                $aBook['id_user'],
+                $aBook['title'],
+                $aBook['author'],
+                $aBook['resume'],
+                $aBook['date_create'],
+                $aBook['date_update'],
+                $aBook['is_enable'],
+                $aBook['url_img'],
+                $aBook['username']);
+        return $book;
+        }
+        return null;
+    }
+
+
 
     public function getAllBooksByUserId(int $idUser) : array
     {
@@ -49,7 +75,7 @@ class BookManager
                 $book['date_create'],
                 $book['date_update'],
                 $book['is_enable'],
-                $book['url_img']);
+                $book['url_img'],null);
         }
         return $books;
     }
@@ -63,7 +89,7 @@ class BookManager
         ]);
         $book = $result->fetch();
         if($book){
-            $aBook = new Book($book['id'],$book['id_user'],$book['title'],$book['author'],$book['resume'],$book['date_create'],$book['date_update'],$book['is_enable'],$book['url_img']);
+            $aBook = new Book($book['id'],$book['id_user'],$book['title'],$book['author'],$book['resume'],$book['date_create'],$book['date_update'],$book['is_enable'],$book['url_img'],null);
             return $aBook;
         }
         return null;

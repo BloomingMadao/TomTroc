@@ -35,7 +35,7 @@ $registerValidate = Utils::request('registerValidate');
         <div class="books">
             <?php foreach ($books as $book) { ?>
                 <div class="container">
-                    <img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>">
+                    <a href="index.php?action=detailBook&id=<?= $book->getId(); ?>"><img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></a>
                     <p class="title"><?= $book->getTitle(); ?></p>
                     <p class="author"><?= $book->getAuthor(); ?></p>
                     <p class="seller">Vendu par : Anonyme </p>

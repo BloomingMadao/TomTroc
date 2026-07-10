@@ -23,6 +23,11 @@ try {
             $bookController->showAllBooks();
             break;
 
+        case 'detailBook':
+            $bookController = new BooksController();
+            $bookController->showDetailBookById();
+            break;
+
         /**
          * Gestion Livre
          */
@@ -45,6 +50,7 @@ try {
             $bookController = new BooksController();
             $bookController->deleteBook();
             break;
+
 
 
 

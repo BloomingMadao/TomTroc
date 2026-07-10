@@ -23,9 +23,20 @@ class BooksController
 
     }
 
+    public function showDetailBookById() : void
+    {
+        $id = (int)Utils::request('id');
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($id);
+
+        $view = new View("Détail Livre");
+        $view->render("detailBook",['book'=>$book]);
+    }
+
     public function addBookForm(): void
     {
-        $book = new Book(-1, $_SESSION["idUser"] ?? 0, "", "", "", new DateTime(), new DateTime(), false, "");
+        $book = new Book(-1, $_SESSION["idUser"] ?? 0, "", "", "", new DateTime(), new DateTime(), false, "",null);
         $view = new View("Ajouter livre");
         $view->render("bookForm", ['book' => $book]);
     }
@@ -105,7 +116,7 @@ class BooksController
             date("Y-m-d H:i:s"),
             date("Y-m-d H:i:s"),
             $isEnable,
-            $path
+            $path,null
         );
 
         $bookManager = new BookManager();
