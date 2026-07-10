@@ -31,14 +31,13 @@ $registerValidate = Utils::request('registerValidate');
 <div class="content">
     <div class="lastBookList">
         <h2>Les derniers livres ajoutés</h2>
-        <i>TAF : Implémenter affichage des 4 derniers livres ajoutés !</i><!--A SUPPRIMER QUAND IMPLEMENTER-->
         <div class="books">
             <?php foreach ($books as $book) { ?>
                 <div class="container">
                     <a href="index.php?action=detailBook&id=<?= $book->getId(); ?>"><img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></a>
                     <p class="title"><?= $book->getTitle(); ?></p>
                     <p class="author"><?= $book->getAuthor(); ?></p>
-                    <p class="seller">Vendu par : Anonyme </p>
+                    <p class="seller">Vendu par : <?= $book->getUsername(); ?> </p>
                 </div>
 
             <?php } ?>
@@ -51,7 +50,7 @@ $registerValidate = Utils::request('registerValidate');
 <div class="content">
     <div class="explanation">
         <h2>Comment ça marche ?</h2>
-        <p>&eacute;changer des livres avec TomTroc c&rsquo;est simple et amusant ! Suivez ces &eacute;tapes pour commencer :</p>
+        <p>Échanger des livres avec TomTroc c&rsquo;est simple et amusant ! Suivez ces &eacute;tapes pour commencer :</p>
         <div class="steps">
             <div class="container">
                 <p>Inscrivez-vous gratuitement sur notre plateforme.</p>

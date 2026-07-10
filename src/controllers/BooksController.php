@@ -7,7 +7,7 @@ class BooksController
     {
 
         $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks(); //getLastBooks() les 5 derniers livres ajoutés
+        $books = $bookManager->getLastBookCreate(); //getLastBooks() les 5 derniers livres ajoutés
 
         $view = new View("Accueil");
         $view->render("home", ['books' => $books]);

@@ -5,18 +5,22 @@
  */
 
 ?>
-
-<div class="allBookList">
-    <div class="heading">
-          <h2>Détail Livre</h2>
-        <input type="text" placeholder="Rechercher un livre">   
-    </div>
-    <div class="books">
-            <div class="container">
-                <img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>">
-                <p class="title"><?= $book->getTitle(); ?></p>
-                <p class="author"><?= $book->getAuthor(); ?></p>
-                <p class="seller"><?= $book->getUsername(); ?> </p>
+<div class="detailBook">
+    <div class="container">
+        <img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>">
+        <div class="textbloc">
+            <div class="textTitle">
+                <h2><?= $book->getTitle(); ?></h2>
+                <p class="author">par <?= $book->getAuthor(); ?></p>
             </div>
+            <hr class="divider">
+            <div class="mainContent">
+                <h3>description</h3>
+                <p class="description"><?= $book->getResume(); ?></p>
+                <h3>propriétaire</h3>
+                <p class="seller"><?= $book->getUsername(); ?> </p>
+                <a href="index.php?action=getOrCreateConversation&id=<?= $book->getId(); ?>&id_seller=<?= $book->getIdUser(); ?>" class="btn">Envoyer un message</a>
+            </div>
+        </div>
     </div>
 </div>

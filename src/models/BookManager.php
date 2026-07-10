@@ -11,7 +11,7 @@ class BookManager
 
     public function getAllBooks(): array
     {
-        $sql="SELECT * FROM books WHERE is_enable=1 order by date_create ASC";
+        $sql="SELECT b.*, u.username from books b INNER JOIN users u on b.id_user=u.id WHERE is_enable=1 order by date_create desc";
 
         $result = $this->db->query($sql);
         $books = [];
@@ -26,7 +26,31 @@ class BookManager
                 $book['date_create'],
                 $book['date_update'],
                 $book['is_enable'],
-                $book['url_img'],null);
+                $book['url_img'],
+                $book['username']);
+        }
+        return $books;
+    }
+
+    public function getLastBookCreate():array
+    {
+        $sql="SELECT b.*, u.username from books b INNER JOIN users u on b.id_user=u.id WHERE is_enable=1 order by date_create DESC limit 4;";
+
+        $result = $this->db->query($sql);
+        $books = [];
+
+        while($book=$result->fetch()){
+            $books[] = new Book(
+                $book['id'],
+                $book['id_user'],
+                $book['title'],
+                $book['author'],
+                $book['resume'],
+                $book['date_create'],
+                $book['date_update'],
+                $book['is_enable'],
+                $book['url_img'],
+                $book['username']);
         }
         return $books;
     }
