@@ -69,13 +69,22 @@ class Book
         $this->author=$author;
     }
 
-    public function getResume():string
+    public function getResume(int $length = -1):string
     {
+            if ($length > 0) {
+            // Ici, on utilise mb_substr et pas substr pour éviter de couper un caractère en deux (caractère multibyte comme les accents).
+            $content = mb_substr($this->resume, 0, $length);
+            if (strlen($this->resume) > $length) {
+                $content .= "...";
+            }
+            return $content;
+        }
         return $this->resume;
     }
 
     public function setResume(string $resume) : void
     {
+        
         $this->resume=$resume;
     } 
     

@@ -43,8 +43,8 @@ $action=Utils::request("action","");
                     <ul>
                         <?php
                         if (isset($_SESSION['user'])) {
-                            echo '<li><img src="#" alt="Logo messagerie"> <a href="#">Messagerie</a></li>';
-                            echo '<li><img src="#" alt="Logo utilisateur"> <a href="index.php?action=userAccount" class="' . ($action === "userAccount" ? 'active' : '') . '">Mon Compte</a></li>';
+                            echo '<li><img src="src/img/config/Icon_messagerie.png" alt="Logo messagerie"> <a href="index.php?action=getMessages" class="' . ($action === "getConversations" ? 'active' : '') . '">Messagerie</a></li>';
+                            echo '<li><img src="src/img/config/Icon_mon_compte.png" alt="Logo utilisateur"> <a href="index.php?action=userAccount" class="' . ($action === "userAccount" ? 'active' : '') . '">Mon Compte</a></li>';
                             echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
                         } else {
                             echo '<li><a href="index.php?action=connectUserForm" class="'.($action === "connectUserForm" || $action ==="registerForm"?'active':'').'">Connexion</a></li>';
@@ -65,9 +65,9 @@ $action=Utils::request("action","");
     </main>
 
     <footer>
-        <p>
-            Tom Troc©
-        </p>
+        <p>Politique de confidentialité</p>
+        <p>Mentions Légales</p>
+        <p>Tom Troc©</p>
         <img src="src/img/config/logo-simple.png" alt="Logo Tomtroc">
     </footer>
 </body>

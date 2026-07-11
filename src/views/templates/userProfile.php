@@ -1,38 +1,55 @@
-<?php 
+<?php
+
 /**
  * 
  */
 $success = Utils::request('success');
 ?>
 
-<?php if ($success==1): ?>
-    <script>alert("<?= Utils::request('message') ?>")</script>
+<?php if ($success == 1): ?>
+    <script>
+        alert("<?= Utils::request('message') ?>")
+    </script>
 <?php endif ?>
-
-<div class="userInfo">
-    <h2>Mon Compte</h2>
-    <h3><?= $userInfo->getUsername(); ?></h3>
-
-</div>
-
-<div class="connection-form">
-    <form action="index.php?action=updateUser" method="post">
-        <h3>Vos informations personnelles</h3>
-        <div class="formGrid">
-            <label for="username">Pseudo</label>
-            <input type="text" name="username" id="username" value="<?= $userInfo->getUsername(); ?>">
-            <label for="mail">Adresse email</label>
-            <input type="text" name="mail" id="mail" value="<?= $userInfo->getMail(); ?>">
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" value="<?= $userInfo->getPassword(); ?>">
-            <button class="submit">Enregistrer</button>
+<h2>Mon Compte</h2>
+<div class="user">
+    <div class="userInfo">
+        <div class="userImg">
+            <p class="round"></p>
+            <i>image de profil placeholder</i>
         </div>
-    </form>
+        <hr>
+        <div class="userDetail">
+
+            <h3 class="username"><?= $userInfo->getUsername(); ?></h3>
+            <span class="label">BIBLIOTHÈQUE</span>
+            <p><?= count($books); ?> livres</p>
+
+        </div>
+
+    </div>
+    <div class="accountForm">
+        <div class="formGrid">
+            <form action="index.php?action=updateUser" method="post">
+                <div class="input">
+                    <h3>Vos informations personnelles</h3>
+                    <label for="username">Pseudo</label>
+                    <input type="text" name="username" id="username" value="<?= $userInfo->getUsername(); ?>">
+                    <label for="mail">Adresse email</label>
+                    <input type="text" name="mail" id="mail" value="<?= $userInfo->getMail(); ?>">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" value="default">
+                    <button class="btn-secondary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 <hr>
-<a href="index.php?action=addBookForm">Ajouter un livre</a>
-<hr>
+
 <div class="bookList">
+    <a href="index.php?action=addBookForm" class="btn">Ajouter un livre</a>
     <table>
         <thead>
             <th>Photo</th>
@@ -48,12 +65,14 @@ $success = Utils::request('success');
                     <td style="width: 16em;"><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
                     <td style="width: 16em;"><?= $book->getTitle(); ?></td>
                     <td style="width: 16em;"><?= $book->getAuthor(); ?></td>
-                    <td style="width: 16em;"><?= $book->getResume(); ?></td>
-                    <td style="width: 16em;"><?php if ($book->getIsEnable()) {
-                            echo 'disponible';
-                        } else {
-                            echo 'non-disponible';
-                        } ?></td>
+                    <td style="width: 16em;"><?= $book->getResume(200); ?></td>
+                    <td style="width: 16em;">
+                        <?php if ($book->getIsEnable()) { ?>
+                            <span class="badge badge-available">disponible</span>
+                        <?php } else { ?>
+                            <span class="badge badge-unavailable">non dispo.</span>
+                        <?php } ?>
+                    </td>
                     <td style="width: 16em;">
                         <nav>
                             <ul>
