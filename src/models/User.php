@@ -4,10 +4,10 @@ class User
 {
     private ?int $id;
     private string $username;
-    private string $password;
-    private string $mail;
+    private ?string $password;
+    private ?string $mail;
 
-    public function __construct (?int $id, string $username,string $mail, string $password)
+    public function __construct (?int $id, string $username,?string $mail, ?string $password)
     {
         $this->setId($id);
         $this->setUsername($username);
@@ -35,22 +35,22 @@ class User
         $this->username=$username;
     }
 
-    public function getPassword() : string 
+    public function getPassword() : ?string 
     {
         return $this->password;
     }
 
-    public function setPassword(string $password) : void
+    public function setPassword(?string $password) : void
     {
         $this->password=$password;
     }
 
-    public function getMail() : string  
+    public function getMail() : ?string  
     {
         return $this->mail;
     }
 
-    public function setMail(string $mail) : void 
+    public function setMail(?string $mail) : void 
     {
         $this->mail=$mail;
     }

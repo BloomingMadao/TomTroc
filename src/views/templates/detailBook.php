@@ -27,7 +27,7 @@
                     </div>
                 </a>
 
-                <a href="index.php?action=getOrCreateConversation&id=<?= $book->getId(); ?>&id_seller=<?= $book->getIdUser(); ?>" class="btn">Envoyer un message</a>
+                <a href="index.php?action=startConversation&id=<?= $book->getIdUser(); ?>" class="btn">Envoyer un message</a>
             </div>
         </div>
     </div>

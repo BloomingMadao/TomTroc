@@ -4,7 +4,7 @@
 class UsersController
 {
 
-    private function checkIfUserIsConnected(): void
+    static function checkIfUserIsConnected(): void
     {
         // On vérifie que l'utilisateur est connecté.
         if (!isset($_SESSION['user'])) {
@@ -99,7 +99,7 @@ class UsersController
         $userDetail=[];
 
         $userManager=new UserManager();
-        $user=$userManager->getUserDetailById($idUser);
+        $user=$userManager->getUserPublicDetailById($idUser);
         $userDetail[]=$user;
 
         $bookManager = new BookManager();

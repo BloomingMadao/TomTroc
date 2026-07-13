@@ -762,6 +762,69 @@ header {
   margin: 0; /* ⬅ l'espacement est géré par le gap du parent .userInfo, pas par une marge propre */
 }
 
+/**Conversations**/
+
+.conversationsList{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.conversationItem_active {
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+.messagerie{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  margin: auto;
+  height: 84vh;
+}
+
+.conversationThread{
+  width: 60%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.conversationThread .threadMessages{
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.message_mine{
+  align-self: flex-end;
+}
+.message{
+  align-self: flex-start;
+}
+.conversationThread .threadForm{
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.conversationThread .threadForm textarea{
+  height: 12vh;
+  width: 85%;
+}
+
+
+
+
 /**Footer*/
 
 footer {

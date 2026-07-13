@@ -9,7 +9,7 @@
 <div class="profileContent">
     <div class="userInfo">
         <h2><?= $userInfo->getUsername(); ?></h2>
-        <a href="" class='btn-secondary'>Envoyer un message</a>
+        <a href="index.php?action=startConversation&id=<?= $userInfo->getId(); ?>" class='btn-secondary'>Envoyer un message</a>
 
     </div>
 

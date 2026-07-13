@@ -43,7 +43,7 @@ $action=Utils::request("action","");
                     <ul>
                         <?php
                         if (isset($_SESSION['user'])) {
-                            echo '<li><img src="src/img/config/Icon_messagerie.png" alt="Logo messagerie"> <a href="index.php?action=getMessages" class="' . ($action === "getConversations" ? 'active' : '') . '">Messagerie</a></li>';
+                            echo '<li><img src="src/img/config/Icon_messagerie.png" alt="Logo messagerie"> <a href="index.php?action=getConversations" class="' . ($action === "getConversations" ? 'active' : '') . '">Messagerie</a></li>';
                             echo '<li><img src="src/img/config/Icon_mon_compte.png" alt="Logo utilisateur"> <a href="index.php?action=userAccount" class="' . ($action === "userAccount" ? 'active' : '') . '">Mon Compte</a></li>';
                             echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
                         } else {

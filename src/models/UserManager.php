@@ -43,6 +43,16 @@ class UserManager
         }
     }
 
+        public function getUserPublicDetailById(int $id) : ?User
+    {
+        $sql = "SELECT u.id,u.username FROM users u  WHERE u.id = :id";
+        $result = $this->db->query($sql,['id' => $id]);
+        $user= $result-> fetch();
+        if ($user){
+            return new User($user['id'],$user['username'],null,null);
+        }
+    }
+
 
 
 }

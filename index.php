@@ -92,6 +92,22 @@ try {
             $userController->showUserProfileById();
             break;
 
+
+        case "getConversations":
+            $conversationsController = new ConversationsController();
+            $conversationsController->showConversationsUser();
+            break;
+
+        case "startConversation":
+            $conversationsController = new ConversationsController();
+            $conversationsController->startConversation();
+            break;
+
+        case "sendMessage":
+            $messagesController = new MessagesController();
+            $messagesController->sendMessage();
+            break;
+
         
         default:
             throw new Exception("La page demandée n'existe pas.");
