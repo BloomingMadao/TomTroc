@@ -93,6 +93,7 @@ try {
             break;
 
 
+        /**Gestion Conversations */
         case "getConversations":
             $conversationsController = new ConversationsController();
             $conversationsController->showConversationsUser();

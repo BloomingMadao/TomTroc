@@ -16,7 +16,13 @@ class BooksController
     public function showAllBooks() : void 
     {
         $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks();
+        $search=Utils::request('search');
+        if(isset($search)){
+            $books = $bookManager->getAllBooksBySearch((string)$search);
+        }else{
+            $books = $bookManager->getAllBooks();
+        }
+
 
         $view = new View("Nos livre à l'échange");
         $view->render("allBook",['books'=>$books]);

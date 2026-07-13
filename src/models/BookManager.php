@@ -32,6 +32,32 @@ class BookManager
         return $books;
     }
 
+
+    public function getAllBooksBySearch(string $search): array
+    {
+        $sql='SELECT b.*, u.username from books b INNER JOIN users u on b.id_user=u.id WHERE is_enable=1  AND (b.title LIKE :search OR b.author LIKE :search OR u.username LIKE :search) order by date_create desc';
+
+        $result = $this->db->query($sql,[
+            'search'=>"%".$search."%",
+        ]);
+        $books = [];
+
+        while($book=$result->fetch()){
+            $books[] = new Book(
+                $book['id'],
+                $book['id_user'],
+                $book['title'],
+                $book['author'],
+                $book['resume'],
+                $book['date_create'],
+                $book['date_update'],
+                $book['is_enable'],
+                $book['url_img'],
+                $book['username']);
+        }
+        return $books;
+    }
+
     public function getLastBookCreate():array
     {
         $sql="SELECT b.*, u.username from books b INNER JOIN users u on b.id_user=u.id WHERE is_enable=1 order by date_create DESC limit 4;";
