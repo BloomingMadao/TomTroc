@@ -67,6 +67,7 @@ class BooksController
 
     public function updateBook(): void
     {
+        $postData=$_POST;
         $id = Utils::request("id");
         $title = Utils::request("title");
         $idUser = Utils::request("idUser");
@@ -111,7 +112,14 @@ class BooksController
             throw new Exception("Vous devez fournir une image.");
         }
 
-        $isEnable = is_null($isEnable) ? 0 : 1;
+        if(is_string($isEnable)&&$isEnable==="non-disponible"){
+            $isEnable=0;
+        }elseif(is_string($isEnable)&&$isEnable==="disponible"){
+            $isEnable=1;
+        }else{
+            throw new Exception("Erreur valeur non reconnue : La valeur doit être disponible ou non-disponible");
+        }
+
 
         $book = new Book(
             (int)$id,

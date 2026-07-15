@@ -5,6 +5,10 @@
  */
 
 $registerValidate = Utils::request('registerValidate');
+// $password="password";
+// $hash = password_hash($password,PASSWORD_DEFAULT);
+// var_dump($hash);
+
 ?>
 <?php if ($registerValidate === "true") : ?>
 <div class="alert">
