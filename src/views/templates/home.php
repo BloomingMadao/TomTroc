@@ -11,9 +11,9 @@ $registerValidate = Utils::request('registerValidate');
 
 ?>
 <?php if ($registerValidate === "true") : ?>
-<div class="alert">
-    <p>Votre compte a bien été enregistré !</p>
-</div>
+    <div class="alert">
+        <p>Votre compte a bien été enregistré !</p>
+    </div>
 <?php endif ?>
 <hr>
 <div class="content">
@@ -25,6 +25,7 @@ $registerValidate = Utils::request('registerValidate');
         </div>
         <div class="img">
             <img src="src/img/config/hamza.jpg" alt="photo pile de livres">
+            <i>Hamza </i>
 
         </div>
     </div>
@@ -52,14 +53,17 @@ $registerValidate = Utils::request('registerValidate');
 <hr>
 <div class="content">
     <div class="explanation">
-        <h2>Comment ça marche ?</h2>
-        <p>Échanger des livres avec TomTroc c&rsquo;est simple et amusant ! Suivez ces &eacute;tapes pour commencer :</p>
+        <div class="explanationTitle">
+            <h2>Comment ça marche ?</h2>
+            <p>Échanger des livres avec TomTroc c&rsquo;est simple et amusant ! Suivez ces &eacute;tapes pour commencer :</p>
+        </div>
+
         <div class="steps">
             <div class="container">
-                <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
+                <p>Inscrivez-vous gratuitement sur<br> notre plateforme.</p>
             </div>
             <div class="container">
-                <p>Ajoutez les livres que vous souhaitez &eacute;changer à votre profil.</p>
+                <p>Ajoutez les livres que vous <br> souhaitez &eacute;changer à <br>votre profil.</p>
             </div>
             <div class="container">
                 <p>Parcourez les livres disponibles chez d&rsquo;autres membres.</p>
@@ -70,22 +74,22 @@ $registerValidate = Utils::request('registerValidate');
         </div>
         <a href="index.php?action=allBooks" class="btn-secondary">Voir tous les livres</a>
     </div>
-
+    <img src="src/img/config/darwin_vegher.jpg" alt="photo bibliothèque" id="imgSeparate">
 </div>
 
 <hr>
 <div class="content">
     <div class=values>
-        <img src="src/img/config/darwin_vegher.jpg" alt="photo bibliothèque" id="imgSeparate">
-        <h2>Nos valeurs</h2>
         <div class="text-bloc">
+            <h2>Nos valeurs</h2>
             <p>Chez Tom Troc, nous mettons l'accent sur le partage, la découverte de la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre déisr de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.</p>
             <p>Notre association a été fondée avec une conviction profonde : chaque livre mérite d'être lu et partagé.</p>
             <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
+            <div class="signature">
+                <i>L'équipe Tom Troc</i>
+                <img src="src\img\config\logo_coeur.svg" alt="Logo Coeur" id="heart">
+            </div>
         </div>
-        <div class="signature">
-            <i>L'équipe Tom Troc</i>
-            <img src="src\img\config\logo_coeur.svg" alt="Logo Coeur" id="heart">
-        </div>
+
     </div>
 </div>

@@ -20,15 +20,16 @@
                 <h3>propriétaire</h3>
                 <a href="index.php?action=showUserProfile&id=<?= $book->getIdUser() ?>">
                     <div class="userProfileCards">
-                        <div class="round">
-                            <img src="#" alt="" class="round">
+                        <div class="roundPublic">
+                            <img src="#" alt="" class="roundPublic">
                         </div>
                         <p><?= $book->getUsername(); ?></p>
                     </div>
                 </a>
 
-                <a href="index.php?action=startConversation&id=<?= $book->getIdUser(); ?>" class="btn">Envoyer un message</a>
+               
             </div>
+             <a href="index.php?action=startConversation&id=<?= $book->getIdUser(); ?>" class="btn">Envoyer un message</a>
         </div>
     </div>
 </div>

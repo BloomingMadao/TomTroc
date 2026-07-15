@@ -8,7 +8,10 @@
 ?>
 <div class="profileContent">
     <div class="userInfo">
-        <h2><?= $userInfo->getUsername(); ?></h2>
+        <p class="round"></p>
+        <h3><?= $userInfo->getUsername(); ?></h3>
+            <span class="label">BIBLIOTHÈQUE</span>
+            <p><?= count($books); ?> livres</p>
         <a href="index.php?action=startConversation&id=<?= $userInfo->getId(); ?>" class='btn-secondary'>Envoyer un message</a>
 
     </div>
@@ -24,10 +27,11 @@
             <tbody>
                 <?php foreach ($books as $book) { ?>
                     <tr>
-                        <td style="width: 16em;"><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
-                        <td style="width: 16em;"><?= $book->getTitle(); ?></td>
-                        <td style="width: 16em;"><?= $book->getAuthor(); ?></td>
-                        <td style="width: 16em;"><?= $book->getResume(); ?></td>
+                        <td ><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
+                        <td ><?= $book->getTitle(); ?></td>
+                        <td><?= $book->getAuthor(); ?></td>
+                        <td><?= $book->getResume(70); ?></td>
+                        
                     </tr>
                 <?php } ?>
 
