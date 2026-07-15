@@ -110,6 +110,26 @@ class UsersController
         $view->render("publicUserProfile",['books'=>$booksUser,'userInfo'=>$user]);
     }
 
+
+    public function updateUser() : void
+    {
+        $this->checkIfUserIsConnected();
+        $idUser=$_SESSION['idUser'];
+        $username = Utils::request("username");
+        $mail = Utils::request("mail");
+        $password = Utils::request("password");
+        $hash="";
+        if (isset($password)){
+            $hash = password_hash($password,PASSWORD_DEFAULT);
+        }
+        $user = new User($idUser,$username,$mail,$hash);
+        $userManager = new UserManager();
+        $userManager->updateUser($user);
+
+         Utils::redirect('userAccount',['success'=>1,"message"=>"compte utilisateur mis à jour"]);
+
+    }
+
     public function disconnectUser():void
     {
         unset($_SESSION['user']);

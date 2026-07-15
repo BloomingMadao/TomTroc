@@ -6,12 +6,11 @@
 
 $registerValidate = Utils::request('registerValidate');
 ?>
-
+<?php if ($registerValidate === "true") : ?>
 <div class="alert">
-    <?php if ($registerValidate === "true") : ?>
-        <p>Votre compte a bien été enregistré !</p>
-    <?php endif ?>
+    <p>Votre compte a bien été enregistré !</p>
 </div>
+<?php endif ?>
 <hr>
 <div class="content">
     <div class="presentation">

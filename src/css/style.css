@@ -717,7 +717,21 @@ header {
   border-collapse: collapse;
   border-style: hidden;
 }
+.navTable{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
 
+.edit{
+  text-decoration: underline;
+  color:black;
+}
+
+.delete a{
+  text-decoration: underline;
+  color: red;
+}
 /**END User Profile Public****/
 
 /**User Profile*/
@@ -825,6 +839,53 @@ header {
 
 /**END CONVERSATION*/
 
+
+/**Book Form**/
+
+.book-form{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.book-form .formGrid{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.book-form .formGrid {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.book-form .formGrid .input {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+.book-form .formGrid .image{
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-form .formGrid .image img{
+  height: 553px;
+  width: 488px;
+  flex: 1;
+  
+}
+
+.book-form .formGrid .image label{
+  cursor: pointer;
+  align-self: flex-end;
+  text-decoration: underline;
+  color: #292929;
+}
 
 /**Footer*/
 

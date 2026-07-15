@@ -65,7 +65,7 @@ $success = Utils::request('success');
                     <td style="width: 16em;"><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
                     <td style="width: 16em;"><?= $book->getTitle(); ?></td>
                     <td style="width: 16em;"><?= $book->getAuthor(); ?></td>
-                    <td style="width: 16em;"><?= $book->getResume(200); ?></td>
+                    <td style="width: 16em;"><?= $book->getResume(75); ?></td>
                     <td style="width: 16em;">
                         <?php if ($book->getIsEnable()) { ?>
                             <span class="badge badge-available">disponible</span>
@@ -75,9 +75,9 @@ $success = Utils::request('success');
                     </td>
                     <td style="width: 16em;">
                         <nav>
-                            <ul>
-                                <li><a href="index.php?action=editBookForm&idBook=<?= $book->getId(); ?>">Editer</a></li>
-                                <li><a href="index.php?action=deleteBook&idBook=<?= $book->getId(); ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a></li>
+                            <ul class="navTable">
+                                <li class="edit"><a href="index.php?action=editBookForm&idBook=<?= $book->getId(); ?>">Editer</a></li>
+                                <li class="delete"><a href="index.php?action=deleteBook&idBook=<?= $book->getId(); ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a></li>
                             </ul>
 
                         </nav>

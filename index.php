@@ -92,6 +92,11 @@ try {
             $userController->showUserProfileById();
             break;
 
+        case 'updateUser':
+            $userController = new UsersController();
+            $userController->updateUser();
+            break;
+
 
         /**Gestion Conversations */
         case "getConversations":

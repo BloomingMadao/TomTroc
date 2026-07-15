@@ -21,6 +21,17 @@ class UserManager
 
     }
 
+    public function updateUser(User $user) : void 
+    {
+        $sql="UPDATE users set mail =:mail, password = :password, username = :username WHERE id = :id";
+        $this->db->query($sql,[
+            'id'=>$user->getId(),
+            'mail'=>$user->getMail(),
+            'password'=>$user->getPassword(),
+            'username'=>$user->getUsername(),
+        ]);
+    }
+
     public function getUserByMail(string $mail) : ?User
     {
         $sql = "SELECT * FROM users WHERE mail = :mail";
