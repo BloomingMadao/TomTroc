@@ -28,4 +28,23 @@ class Utils {
     {
         return "onclick=\"return confirm('$message');\"";
     }
+
+
+    public static function formatShortDate(DateTime $date) : string
+    {
+        $today = new DateTime('today');
+        if ($date >= $today) {
+            return $date->format('H:i');
+        }
+        return $date->format('d.m');
+    }
+
+    public static function truncate(string $text, int $length = 30) : string
+    {
+        if (mb_strlen($text) <= $length) {
+            return $text;
+        }
+        return mb_substr($text, 0, $length) . '...';
+    }
+
 }

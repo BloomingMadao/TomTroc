@@ -19,11 +19,23 @@
         <?php foreach ($conversationsList as $item) {
             $conversation = $item['conversation'];
             $otherUserItem = $item['otherUser'];
+            $lastMessage = $item['lastMessage'];
             $isActive = $selectedConversation && $selectedConversation->getId() === $conversation->getId();
         ?>
             <a class="conversationItem<?= $isActive ? '_active' : '' ?>"
                href="index.php?action=getConversations&id=<?= $conversation->getId(); ?>">
-                <span class="conversationUsername"><?= $otherUserItem->getUsername(); ?></span>
+                <div class="roundPublic"></div>
+                <div class="conversationInfo">
+                    <div class="conversationTop">
+                        <span class="conversationUsername"><?= $otherUserItem->getUsername(); ?></span>
+                        <?php if ($lastMessage) { ?>
+                            <span class="conversationDate"><?= Utils::formatShortDate($lastMessage->getDateCreate()); ?></span>
+                        <?php } ?>
+                    </div>
+                    <?php if ($lastMessage) { ?>
+                        <span class="conversationPreview"><?= Utils::truncate($lastMessage->getMessage(), 28); ?></span>
+                    <?php } ?>
+                </div>
             </a>
         <?php } ?>
     </div>
@@ -32,6 +44,7 @@
         <?php if ($selectedConversation && $otherUser) { ?>
 
             <div class="threadHeader">
+                <div class="roundPublic"></div>
                 <h3><?= $otherUser->getUsername(); ?></h3>
             </div>
 
@@ -40,16 +53,19 @@
                     $isMine = $message->getIdSender() === $currentUser->getId();
                 ?>
                     <div class="message<?= $isMine ? '_mine' :'' ?>">
+                        <?php if (!$isMine) { ?>
+                            <div class="roundPublic"></div>
+                        <?php } ?>
                         <p><?= $isMine ? $currentUser->getUsername() : $otherUser->getUsername()?></p>
+                        <span class="messageDate"><?= $message->getDateCreate()->format('d.m H:i'); ?></span>
                         <p><?= $message->getMessage(); ?></p>
-                        <span class="messageDate"><?= $message->getDateCreate()->format('Y-m-d H:i:s'); ?></span>
                     </div>
                 <?php } ?>
             </div>
             <hr>
             <form class="threadForm" action="index.php?action=sendMessage" method="post">
                 <input type="hidden" name="id_conversation" value="<?= $selectedConversation->getId(); ?>">
-                <textarea name="message" placeholder="Écrivez votre message..." required></textarea>
+                <textarea name="message" placeholder="Tapez votre message ici" required></textarea>
                 <button type="submit" class="btn">Envoyer</button>
             </form>
 

@@ -15,9 +15,11 @@ class ConversationsController
         $conversationsList = [];
         foreach ($conversations as $conversation) {
             $otherUser = $userManager->getUserDetailById($conversation->getOtherUserId($idUser));
+            $lastMessage = $messageManager->getLastMessageByConversationId($conversation->getId());
             $conversationsList[] = [
                 'conversation' => $conversation,
-                'otherUser' => $otherUser
+                'otherUser' => $otherUser,
+                'lastMessage' => $lastMessage
             ];
         }
 
