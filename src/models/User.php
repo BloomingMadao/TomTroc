@@ -6,8 +6,9 @@ class User
     private string $username;
     private ?string $password;
     private ?string $mail;
+    private string $urlImg;
 
-    public function __construct (?int $id, string $username,?string $mail, ?string $password)
+    public function __construct (?int $id, string $username,?string $mail, ?string $password,string $urlImg)
     {
         $this->setId($id);
         $this->setUsername($username);
@@ -55,5 +56,14 @@ class User
         $this->mail=$mail;
     }
 
+    public function getUrlImg () : string 
+    {
+        return $this->urlImg;
+    }
+    
+    public function setUrlImg(string $urlImg) : void 
+    {
+        $this->urlImg=$urlImg;
+    }
 
 }

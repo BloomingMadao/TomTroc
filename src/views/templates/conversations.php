@@ -5,7 +5,9 @@
 ?>
 
 <script>
-    setInterval(function(){ location.reload(); }, 60000);
+    document.addEventListener('DOMContentLoaded', () => {
+        setInterval(function(){ location.reload(); }, 60000);
+    });
 </script>
 
 <div class="messagerie">
@@ -44,8 +46,11 @@
         <?php if ($selectedConversation && $otherUser) { ?>
 
             <div class="threadHeader">
-                <div class="roundPublic"></div>
-                <h3><?= $otherUser->getUsername(); ?></h3>
+                <a href="index.php?action=getConversations" class="backLink">&larr; retour</a>
+                <div class="threadUser">
+                    <div class="roundPublic"></div>
+                    <h3><?= $otherUser->getUsername(); ?></h3>
+                </div>
             </div>
 
             <div class="threadMessages">

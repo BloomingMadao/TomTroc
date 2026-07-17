@@ -12,11 +12,12 @@ class UserManager
     public function addUser(User $user) : void
     {
 
-        $sql = "INSERT INTO users (mail,password,username) VALUES (:mail, :password, :username)";
+        $sql = "INSERT INTO users (mail,password,username,url_img) VALUES (:mail, :password, :username, :url_img)";
         $this->db->query($sql,[
             'mail' => $user->getMail(),
             'password' => $user->getPassword(),
-            'username' => $user -> getUsername()
+            'username' => $user -> getUsername(),
+            'url_img' => $user->getUrlImg()
         ]);
 
     }
@@ -38,7 +39,7 @@ class UserManager
         $result = $this->db->query($sql,['mail' => $mail]);
         $user= $result-> fetch();
         if ($user){
-            return new User($user['id'],$user['username'],$user['mail'],$user['password']);
+            return new User($user['id'],$user['username'],$user['mail'],$user['password'],$user['user_img']);
         }
     }
 
@@ -50,7 +51,7 @@ class UserManager
         $result = $this->db->query($sql,['id' => $id]);
         $user= $result-> fetch();
         if ($user){
-            return new User($user['id'],$user['username'],$user['mail'],$user['password']);
+            return new User($user['id'],$user['username'],$user['mail'],$user['password'],$user['user_img']);
         }
     }
 
@@ -60,7 +61,7 @@ class UserManager
         $result = $this->db->query($sql,['id' => $id]);
         $user= $result-> fetch();
         if ($user){
-            return new User($user['id'],$user['username'],null,null);
+            return new User($user['id'],$user['username'],null,null,$user['user_img']);
         }
     }
 

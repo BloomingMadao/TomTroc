@@ -44,7 +44,7 @@ $registerValidate = Utils::request('registerValidate');
                         </a>
                     </div>
                     <div class="bookTextBloc">
-                        <p class="title"><?= $book->getTitle(); ?></p>
+                        <p class="title"><?= Utils::truncate($book->getTitle(),14); ?></p>
                         <p class="author"><?= $book->getAuthor(); ?></p>
                         <p class="seller">Vendu par : <?= $book->getUsername(); ?> </p>
                     </div>

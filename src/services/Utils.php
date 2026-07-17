@@ -39,7 +39,7 @@ class Utils {
         return $date->format('d.m');
     }
 
-    public static function truncate(string $text, int $length = 30) : string
+    public static function truncate(string $text, int $length = 15) : string
     {
         if (mb_strlen($text) <= $length) {
             return $text;

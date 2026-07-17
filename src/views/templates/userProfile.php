@@ -57,28 +57,32 @@ $success = Utils::request('success');
 <div class="bookList">
     <table>
         <thead>
-            <th>Photo</th>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Resumé</th>
-            <th>Disponibilité</th>
-            <th>Action</th>
+            <tr>
+                <th>Photo</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Resumé</th>
+                <th>Disponibilité</th>
+                <th>Action</th>
+            </tr>
         </thead>
         <tbody>
             <?php foreach ($books as $book) { ?>
                 <tr>
-                    <td><img style="width:75px;height:100px" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>"></td>
-                    <td><?= $book->getTitle(); ?></td>
-                    <td><?= $book->getAuthor(); ?></td>
-                    <td><?= $book->getResume(75); ?></td>
-                    <td>
+                    <td class="img">
+                        <img class="bookImg" src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>">
+                    </td>
+                    <td class="title"><?= $book->getTitle(); ?></td>
+                    <td class="author"><?= $book->getAuthor(); ?></td>
+                    <td class="resume"><?= $book->getResume(75); ?></td>
+                    <td class="isEnable">
                         <?php if ($book->getIsEnable()) { ?>
                             <span class="badge badge-available">disponible</span>
                         <?php } else { ?>
                             <span class="badge badge-unavailable">non dispo.</span>
                         <?php } ?>
                     </td>
-                    <td style="width: 16em;">
+                    <td class="action">
                         <nav>
                             <ul class="navTable">
                                 <li class="edit"><a href="index.php?action=editBookForm&idBook=<?= $book->getId(); ?>">Editer</a></li>

@@ -42,6 +42,7 @@ class BooksController
 
     public function addBookForm(): void
     {
+        UsersController::checkIfUserIsConnected();
         $book = new Book(-1, $_SESSION["idUser"] ?? 0, "", "", "", new DateTime(), new DateTime(), false, "",null);
         $view = new View("Ajouter livre");
         $view->render("bookForm", ['book' => $book]);
@@ -49,6 +50,7 @@ class BooksController
 
     public function editBookForm(): void
     {
+        UsersController::checkIfUserIsConnected();
         $id = (int)Utils::request("idBook");
         $idUser = $_SESSION['idUser'];
 
@@ -67,7 +69,7 @@ class BooksController
 
     public function updateBook(): void
     {
-        $postData=$_POST;
+        UsersController::checkIfUserIsConnected();
         $id = Utils::request("id");
         $title = Utils::request("title");
         $idUser = Utils::request("idUser");
@@ -147,6 +149,7 @@ class BooksController
 
     public function deleteBook()
     {
+        UsersController::checkIfUserIsConnected();
         $id = (int)Utils::request('idBook');
         $idUser = (int)$_SESSION['idUser'];
 
