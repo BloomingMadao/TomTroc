@@ -26,7 +26,7 @@
         ?>
             <a class="conversationItem<?= $isActive ? '_active' : '' ?>"
                href="index.php?action=getConversations&id=<?= $conversation->getId(); ?>">
-                <div class="roundPublic"></div>
+                <div class="roundPublic"> <img src="<?= $otherUserItem->getUrlImg(); ?>" alt="Photo de profil"></div>
                 <div class="conversationInfo">
                     <div class="conversationTop">
                         <span class="conversationUsername"><?= $otherUserItem->getUsername(); ?></span>
@@ -48,7 +48,7 @@
             <div class="threadHeader">
                 <a href="index.php?action=getConversations" class="backLink">&larr; retour</a>
                 <div class="threadUser">
-                    <div class="roundPublic"></div>
+                    <div class="roundPublic"><img src="<?= $otherUser->getUrlImg() ?>" alt=""></div>
                     <h3><?= $otherUser->getUsername(); ?></h3>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 ?>
                     <div class="message<?= $isMine ? '_mine' :'' ?>">
                         <?php if (!$isMine) { ?>
-                            <div class="roundPublic"></div>
+                            <div class="roundPublic"><img src="<?= $otherUser->getUrlImg() ?>" alt=""></div>
                         <?php } ?>
                         <p><?= $isMine ? $currentUser->getUsername() : $otherUser->getUsername()?></p>
                         <span class="messageDate"><?= $message->getDateCreate()->format('d.m H:i'); ?></span>

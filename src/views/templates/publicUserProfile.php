@@ -8,7 +8,7 @@
 ?>
 <div class="profileContent">
     <div class="userInfo">
-        <p class="round"></p>
+        <div class="round"><img src="<?= $userInfo->getUrlImg(); ?>" alt=""></div>
         <hr>
         <h3><?= $userInfo->getUsername(); ?></h3>
         <span class="label">BIBLIOTHÈQUE</span>

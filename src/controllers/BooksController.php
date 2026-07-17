@@ -36,8 +36,11 @@ class BooksController
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($id);
 
+        $userManager = new UserManager();
+        $user = $userManager->getUserPublicDetailById($book->getIdUser());
+
         $view = new View("Détail Livre");
-        $view->render("detailBook",['book'=>$book]);
+        $view->render("detailBook",['book'=>$book,'user'=>$user]);
     }
 
     public function addBookForm(): void

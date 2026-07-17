@@ -14,6 +14,7 @@ class User
         $this->setUsername($username);
         $this->setMail($mail);
         $this->setPassword($password);
+        $this->setUrlImg($urlImg);
     }
 
     public function getId() :int

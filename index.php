@@ -7,7 +7,7 @@ $action = Utils::request('action','home');
 
 
 try {
-    switch ($action) {
+ switch ($action) {
 
 
         /**
