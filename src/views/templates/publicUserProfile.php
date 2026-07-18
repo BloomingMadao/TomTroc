@@ -12,7 +12,7 @@
         <hr>
         <h3><?= $userInfo->getUsername(); ?></h3>
         <span class="label">BIBLIOTHÈQUE</span>
-        <p class="bookCount"><?= count($books); ?> livres</p>
+        <img src="src/img/config/books.svg" alt="logo livre"><p class="bookCount"><?= count($books); ?> livres</p>
         <a href="index.php?action=startConversation&id=<?= $userInfo->getId(); ?>" class='btn-secondary'>Envoyer un message</a>
     </div>
 
