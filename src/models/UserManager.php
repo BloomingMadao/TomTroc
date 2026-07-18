@@ -65,6 +65,15 @@ class UserManager
         }
     }
 
+    public function updateUserImg( int $idUser, string $pathImg):void
+    {
+        $sql="UPDATE users set user_img= :url_img WHERE id = :id";
+        $this->db->query($sql,[
+            'url_img'=>$pathImg,
+            'id'=>$idUser,
+            ]);
+    }
+
 
 
 }

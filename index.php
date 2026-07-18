@@ -97,6 +97,11 @@ try {
             $userController->updateUser();
             break;
 
+        case 'updateUserImg' :
+            $userController = new UsersController();
+            $userController->updateUserImg();
+            break;
+
 
         /**Gestion Conversations */
         case "getConversations":

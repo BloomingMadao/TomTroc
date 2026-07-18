@@ -17,8 +17,17 @@ $success = Utils::request('success');
     <div class="userBlock">
         <div class="userContainer">
             <div class="userImg">
-                <p class="round"></p>
-                <i>image de profil placeholder</i>
+                <div class="round">
+                    <img src="<?= $userInfo->getUrlImg(); ?>" alt="">
+                </div>
+                <form action="index.php?action=updateUserImg" method="post" enctype="multipart/form-data">
+                    <label for="img">Modifier la photo</label>
+                    <input type="file" name="img" id="img" hidden onchange="this.form.submit()">
+                    <noscript>
+                        <button type="submit">Envoyer</button>
+                    </noscript>
+
+                </form>
             </div>
             <hr>
             <div class="userDetail">
@@ -41,7 +50,7 @@ $success = Utils::request('success');
                         <label for="mail">Adresse email</label>
                         <input type="text" name="mail" id="mail" value="<?= $userInfo->getMail(); ?>">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password" value="default">
+                        <input type="password" name="password" id="password" value="current-password">
                         <button class="btn-secondary">Enregistrer</button>
                     </div>
                 </form>

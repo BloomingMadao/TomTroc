@@ -81,7 +81,7 @@ class BooksController
         $isEnable = Utils::request("isEnable");
         $imgUrlNow = Utils::request("imgUrlNow");
         $img = Utils::file('img');
-        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
 
         if (empty($title) || empty($author) || empty($resume)) {
             throw new Exception("Tous les champs sont obligatoires.");
@@ -100,7 +100,7 @@ class BooksController
                 throw new Exception("L'image est trop volumineuse (5 Mo maximum).");
             }
             if (!isset($imgInfo['extension']) || !in_array(strtolower($imgInfo['extension']), $allowedExtensions)) {
-                throw new Exception("L'extension du fichier n'est pas valide : 'jpg', 'jpeg', 'png', 'gif'");
+                throw new Exception("L'extension du fichier n'est pas valide : 'jpg', 'jpeg', 'png'.");
             }
 
             $path = 'src/img/' . basename($img['name']);
