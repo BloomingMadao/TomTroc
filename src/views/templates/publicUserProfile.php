@@ -8,11 +8,13 @@
 ?>
 <div class="profileContent">
     <div class="userInfo">
-        <div class="round"><img src="<?= $userInfo->getUrlImg(); ?>" alt=""></div>
+        <div class="round">
+            <img class="round" src="<?= $userInfo->getUrlImg(); ?>" alt="">
+        </div>
         <hr>
         <h3><?= $userInfo->getUsername(); ?></h3>
         <span class="label">BIBLIOTHÈQUE</span>
-        <img src="src/img/config/books.svg" alt="logo livre"><p class="bookCount"><?= count($books); ?> livres</p>
+        <img src="src/img/config/books.svg" alt="logo livre"><p class="bookCount"><?= count($books); ?> <?= count($books) > 1 ? 'livres' : 'livre'?></p>
         <a href="index.php?action=startConversation&id=<?= $userInfo->getId(); ?>" class='btn-secondary'>Envoyer un message</a>
     </div>
 

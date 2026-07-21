@@ -15,7 +15,7 @@ $registerValidate = Utils::request('registerValidate');
         <p>Votre compte a bien été enregistré !</p>
     </div>
 <?php endif ?>
-<hr>
+
 <div class="content">
     <div class="presentation">
         <div class="text-bloc">
@@ -31,7 +31,7 @@ $registerValidate = Utils::request('registerValidate');
     </div>
 
 </div>
-<hr>
+
 <div class="content">
     <div class="lastBookList">
         <h2>Les derniers livres ajoutés</h2>
@@ -52,7 +52,7 @@ $registerValidate = Utils::request('registerValidate');
     </div>
 </div>
 
-<hr>
+
 <div class="content">
     <div class="explanation">
         <div class="explanationTitle">
@@ -82,7 +82,7 @@ $registerValidate = Utils::request('registerValidate');
 </div>
 
 
-<hr>
+
 <div class="content">
     <div class=values>
         <div class="text-bloc">

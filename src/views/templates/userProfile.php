@@ -18,7 +18,7 @@ $success = Utils::request('success');
         <div class="userContainer">
             <div class="userImg">
                 <div class="round">
-                    <img src="<?= $userInfo->getUrlImg(); ?>" alt="">
+                    <img class="round" src="<?= $userInfo->getUrlImg(); ?>" alt="">
                 </div>
                 <form action="index.php?action=updateUserImg" method="post" enctype="multipart/form-data">
                     <label for="img">Modifier la photo</label>
@@ -61,7 +61,7 @@ $success = Utils::request('success');
 
 </div>
 
-<hr>
+
 
 <div class="bookList">
     <table>

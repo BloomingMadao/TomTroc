@@ -20,7 +20,7 @@
                 <a href="index.php?action=showUserProfile&id=<?= $book->getIdUser() ?>">
                     <div class="userProfileCards">
                         <div class="roundPublic">
-                            <img src="<?= $user->getUrlImg(); ?>" alt="">
+                            <img class="roundPublic" src="<?= $user->getUrlImg(); ?>" alt="">
                         </div>
                         <p><?= $book->getUsername(); ?></p>
                     </div>
