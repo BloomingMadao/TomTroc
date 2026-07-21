@@ -65,12 +65,16 @@ class UsersController
             throw new Exception("Le mot de passe est incorrect : $hash");
         }
 
+        $messageManager = new MessageManager();
+        $unreadMessages = $messageManager->getNumberUnreadMessagesByUserId($user->getId());
+
         // On connecte l'utilisateur.
         $_SESSION['user'] = $user;
         $_SESSION['idUser'] = $user->getId();
 
+
         // On redirige vers la page d'administration.
-        Utils::redirect("home");
+        Utils::redirect("home",['messages'=> $unreadMessages]);
     }
 
     public function showUserProfile(): void

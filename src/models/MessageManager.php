@@ -47,6 +47,24 @@ class MessageManager
         );
     }
 
+public function getNumberUnreadMessagesByUserId(int $idUser) : int
+{
+    $sql = "SELECT COUNT(m.id) as number_messages_unread
+            FROM messages m
+            INNER JOIN conversations c ON c.id = m.id_conversation
+            WHERE (c.id_user1 = :id_user OR c.id_user2 = :id_user)
+            AND m.id_sender != :id_user
+            AND m.is_read = 0";
+
+    $result = $this->db->query($sql, [
+        'id_user' => $idUser
+    ]);
+
+    $data = $result->fetch();
+    return (int)$data['number_messages_unread'];
+}
+
+
     public function addMessage(Message $message) : void
     {
         $sql = "INSERT INTO messages (id_conversation, id_sender, message, date_create) 
