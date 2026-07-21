@@ -38,16 +38,12 @@ $registerValidate = Utils::request('registerValidate');
         <div class="books">
             <?php foreach ($books as $book) { ?>
                 <div class="container">
-                    <div class="bookImg">
                         <a href="index.php?action=detailBook&id=<?= $book->getId(); ?>">
                             <img src="<?= $book->getUrlImg(); ?>" alt="Image <?= $book->getTitle(); ?>">
                         </a>
-                    </div>
-                    <div class="bookTextBloc">
                         <p class="title"><?= Utils::truncate($book->getTitle(),14); ?></p>
                         <p class="author"><?= $book->getAuthor(); ?></p>
                         <p class="seller">Vendu par : <?= $book->getUsername(); ?> </p>
-                    </div>
                 </div>
 
             <?php } ?>

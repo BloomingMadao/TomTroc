@@ -1,3 +1,8 @@
-/config
-/src/img
 .vscode
+/config
+
+src/img/**/*.png
+src/img/**/*.jpg
+src/img/**/*.svg
+src/img/1/
+!src/img/config/**

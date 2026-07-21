@@ -1074,6 +1074,8 @@ header {
   gap: 10px;
 }
 
+
+
 .conversationUsername {
   font-size: 15px;
   color: #292929;
@@ -1552,9 +1554,10 @@ footer img {
     display: none;
   }
 
-  .books .container .bookTextBloc {
+.lastBookList .books .container .bookTextBloc {
     display: flex;
     flex-direction: column;
+    gap: 30px;
   }
 
   .content .explanation {
