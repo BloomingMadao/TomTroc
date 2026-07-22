@@ -10,7 +10,7 @@
         <h2>Nos livres à l'échange</h2>
         <form action="index.php?action=allBooks&search=<?= Utils::request('search') ?>" method="get">
           <input type="hidden" name="action" value="allBooks">
-        <input type="text" placeholder="Rechercher un livre" id="search" name="search" value="<?= Utils::request('search') ?>" >   
+        <input type="text" placeholder="Rechercher un livre" id="search" name="search" value="<?= Utils::request('search') ?>" autocomplete="off" >   
         <button type="submit"></button>
         </form>
 

@@ -12,11 +12,11 @@
             <div class="input">
                 <h2>Inscription</h2>
                 <label for="username">Pseudo</label>
-                <input type="text" name="username" id="username" required>
+                <input type="text" name="username" id="username" autocomplete="off" required >
                 <label for="mail">Adresse email</label>
                 <input type="text" name="mail" id="mail" required>
                 <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password" id="password" autocomplete="off" required >
                 <button class="btn">S'inscrire</button>
                 <p>Déjà inscrit ? <a href="index.php?action=connectUserForm">Connectez-vous</a></p>
             </div>

@@ -122,7 +122,7 @@ class UsersController
         $mail = Utils::request("mail");
         $password = Utils::request("password");
         $hash = "";
-        if (isset($password)) {
+        if (isset($password) && $password !="") {
             $hash = password_hash($password, PASSWORD_DEFAULT);
         }
         $user = new User($idUser, $username, $mail, $hash, '');

@@ -12,7 +12,7 @@
             <div class="input">
                 <h2>Connexion</h2>
                 <label for="mail">Adresse email</label>
-                <input type="text" name="mail" id="mail" required>
+                <input type="text" name="mail" id="mail" autocomplete="off" required >
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password" required>
                 <button class="btn">Se connecter</button>
