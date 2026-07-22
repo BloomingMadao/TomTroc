@@ -89,7 +89,7 @@ $registerValidate = Utils::request('registerValidate');
             <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
             <div class="signature">
                 <i>L'équipe Tom Troc</i>
-                <img src="src\img\config\logo_coeur.svg" alt="Logo Coeur" id="heart">
+                <img src="src/img/config/logo_coeur.svg" alt="Logo Coeur" id="heart">
             </div>
         </div>
 
