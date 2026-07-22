@@ -71,10 +71,11 @@ class UsersController
         // On connecte l'utilisateur.
         $_SESSION['user'] = $user;
         $_SESSION['idUser'] = $user->getId();
+        $_SESSION['messages'] = $unreadMessages;
 
 
         // On redirige vers la page d'administration.
-        Utils::redirect("home",['messages'=> $unreadMessages]);
+        Utils::redirect("home");
     }
 
     public function showUserProfile(): void

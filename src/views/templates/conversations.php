@@ -23,13 +23,14 @@
             $otherUserItem = $item['otherUser'];
             $lastMessage = $item['lastMessage'];
             $isActive = $selectedConversation && $selectedConversation->getId() === $conversation->getId();
+            $isUnread = $item['isUnread'];
         ?>
             <a class="conversationItem<?= $isActive ? '_active' : '' ?>"
                href="index.php?action=getConversations&id=<?= $conversation->getId(); ?>">
                 <div class="roundPublic"> <img src="<?= $otherUserItem->getUrlImg(); ?>" alt="Photo de profil"></div>
                 <div class="conversationInfo">
                     <div class="conversationTop">
-                        <span class="conversationUsername"><?= $otherUserItem->getUsername(); ?></span>
+                        <span class="conversationUsername"><?= $otherUserItem->getUsername(); ?><?php if ($isUnread) { ?><span class="unreadIndicator" title="Message non lu">!</span><?php } ?></span>
                         <?php if ($lastMessage) { ?>
                             <span class="conversationDate"><?= Utils::formatShortDate($lastMessage->getDateCreate()); ?></span>
                         <?php } ?>

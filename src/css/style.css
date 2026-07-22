@@ -280,6 +280,14 @@ height: 35px;
   height: 48px;
 }
 
+.unreadIndicator {
+  display: inline-block;
+  margin-left: 20px;
+  color: #e53935;
+  font-weight: 700;
+  font-size: 14px;
+}
+
 .message .roundPublic {
   width: 35px;
   height: 35px;

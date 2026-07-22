@@ -9,6 +9,7 @@
  */
 
 $action = Utils::request("action", "");
+
 ?>
 
 
@@ -31,6 +32,26 @@ $action = Utils::request("action", "");
                 burger.setAttribute('aria-expanded', isOpen);
             });
         });
+
+    <?php if (isset($_SESSION['user'])): ?>
+    document.addEventListener('DOMContentLoaded', () => {
+        function refreshUnreadMessages() {
+            fetch('index.php?action=getUnreadMessage')
+                .then(response => response.json())
+                .then(data => {
+                    const badge = document.getElementById('unread-badge');
+                    if (!badge) return;
+                    const count = data.unread || 0;
+                    badge.textContent = count;
+                    badge.style.display = count > 0 ? '' : 'none';
+                })
+                .catch(error => console.error('Erreur lors de la récupération des messages non lus :', error));
+        }
+
+        // Rafraîchit le compteur toutes les 60 secondes (ajuste la valeur si besoin).
+        setInterval(refreshUnreadMessages, 60000);
+    });
+    <?php endif; ?>
     </script>
 
 </head>
@@ -59,7 +80,11 @@ $action = Utils::request("action", "");
                     <ul>
                         <?php
                         if (isset($_SESSION['user'])) {
-                            echo '<li><img src="src/img/config/Icon_messagerie.png" alt="Logo messagerie"> <a href="index.php?action=getConversations" class="' . ($action === "getConversations" ? 'active' : '') . '">Messagerie</a></li>';
+                            if (!isset($_SESSION['messages'])) {
+                                MessagesController::refreshUnreadCount($_SESSION['idUser']);
+                            }
+                            $unreadCount = (int) $_SESSION['messages'];
+                            echo '<li><img src="src/img/config/Icon_messagerie.png" alt="Logo messagerie"> <a href="index.php?action=getConversations" class="' . ($action === "getConversations" ? 'active' : '') . '">Messagerie <span id="unread-badge" class="badge-unread"' . ($unreadCount === 0 ? ' style="display:none;"' : '') . '>' . $unreadCount . '</span></a></li>';
                             echo '<li><img src="src/img/config/Icon_mon_compte.png" alt="Logo utilisateur"> <a href="index.php?action=userAccount" class="' . ($action === "userAccount" ? 'active' : '') . '">Mon Compte</a></li>';
                             echo '<li><a href="index.php?action=disconnectUser">Deconnexion</a></li>';
                         } else {
