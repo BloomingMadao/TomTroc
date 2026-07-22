@@ -1,8 +1,4 @@
 .vscode
-/config
-
-src/img/**/*.png
-src/img/**/*.jpg
-src/img/**/*.svg
+/config/config.php
 src/img/1/
 !src/img/config/**
