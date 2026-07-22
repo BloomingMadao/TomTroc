@@ -5,29 +5,30 @@ class MessageManager
 
     public function __construct()
     {
-        $this->db=DBManager::getInstance();
+        $this->db = DBManager::getInstance();
     }
 
-    public function getAllMessagesByConversationId(int $idConversation) : array
+    public function getAllMessagesByConversationId(int $idConversation): array
     {
         $sql = "SELECT * from messages WHERE id_conversation = :id_conversation";
-        $result=$this->db->query($sql,[
-            'id_conversation'=>$idConversation
+        $result = $this->db->query($sql, [
+            'id_conversation' => $idConversation
         ]);
         $messages = [];
-        while($message=$result->fetch()){
+        while ($message = $result->fetch()) {
             $messages[] = new Message(
                 $message['id'],
                 $message['id_conversation'],
                 $message['id_sender'],
                 $message['message'],
-                $message['date_create']
+                $message['date_create'],
+                (int)$message['is_read']
             );
         }
         return $messages;
     }
 
-    public function getLastMessageByConversationId(int $idConversation) : ?Message
+    public function getLastMessageByConversationId(int $idConversation): ?Message
     {
         $sql = "SELECT * FROM messages WHERE id_conversation = :id_conversation
                 ORDER BY date_create DESC LIMIT 1";
@@ -43,11 +44,66 @@ class MessageManager
             $message['id_conversation'],
             $message['id_sender'],
             $message['message'],
-            $message['date_create']
+            $message['date_create'],
+            (int)$message['is_read']
         );
     }
 
-    public function addMessage(Message $message) : void
+    public function getUnreadCountsByConversationForUser(int $idUser): array
+    {
+        $sql = "SELECT m.id_conversation, COUNT(m.id) as unread_count
+                FROM messages m
+                INNER JOIN conversations c ON c.id = m.id_conversation
+                WHERE (c.id_user1 = :id_user OR c.id_user2 = :id_user)
+                AND m.id_sender != :id_user
+                AND m.is_read = 0
+                GROUP BY m.id_conversation";
+
+        $result = $this->db->query($sql, [
+            'id_user' => $idUser
+        ]);
+
+        $counts = [];
+        while ($row = $result->fetch()) {
+            $counts[(int) $row['id_conversation']] = (int) $row['unread_count'];
+        }
+        return $counts;
+    }
+
+    public function getNumberUnreadMessagesByUserId(int $idUser): int
+    {
+        $sql = "SELECT COUNT(m.id) as number_messages_unread
+            FROM messages m
+            INNER JOIN conversations c ON c.id = m.id_conversation
+            WHERE (c.id_user1 = :id_user OR c.id_user2 = :id_user)
+            AND m.id_sender != :id_user
+            AND m.is_read = 0";
+
+        $result = $this->db->query($sql, [
+            'id_user' => $idUser
+        ]);
+
+        $data = $result->fetch();
+        return (int)$data['number_messages_unread'];
+    }
+
+    public function markMessagesAsRead(int $idConversation, int $idUser): void
+    {
+        $sql = "UPDATE messages
+                SET is_read = 1
+                WHERE id_conversation = :id_conversation
+                AND id_sender != :id_user
+                AND is_read = 0";
+
+        $this->db->query($sql, [
+            'id_conversation' => $idConversation,
+            'id_user' => $idUser
+        ]);
+    }
+
+
+
+    public function addMessage(Message $message): void
     {
         $sql = "INSERT INTO messages (id_conversation, id_sender, message, date_create) 
                 VALUES (:id_conversation, :id_sender, :message, NOW())";
@@ -57,5 +113,4 @@ class MessageManager
             'message' => $message->getMessage()
         ]);
     }
-
 }

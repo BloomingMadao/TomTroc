@@ -7,15 +7,17 @@ class Message
     private int $idSender;
     private string $message;
     private string|DateTime $dateCreate;
+    private int|bool $isRead;
 
 
-    public function __construct(?int $id,int $idConversation,int $idSender,string $message,string|DateTime $dateCreate)
+    public function __construct(?int $id,int $idConversation,int $idSender,string $message,string|DateTime $dateCreate, int|bool $isRead)
     {
         $this->setId($id);
         $this->setIdConversation($idConversation);
         $this->setIdSender($idSender);
         $this->setMessage($message);
         $this->setDateCreate($dateCreate);
+        $this->setIsRead($isRead);
     }
 
     public function getId():?int
@@ -69,6 +71,26 @@ class Message
             $creationDate = DateTime::createFromFormat($format,$creationDate);
         }
         $this->dateCreate=$creationDate;
+    }
+
+    public function getIsRead():bool
+    {
+        return $this->isRead;
+    }
+
+    public function setIsRead(int|bool $isRead) :void 
+    {
+        if (is_int($isRead)&&$isRead==0){
+            $this->isRead=false;
+        }elseif(is_int($isRead)&&$isRead==1){
+            $this->isRead=true;
+        }elseif(is_bool($isRead)&&$isRead==true){
+            $this->isRead=1;
+        }elseif(is_bool($isRead)&&$isRead==false){
+            $this->isRead=0;
+        }else{
+            throw new Exception('Le message n\'a pas été reconnue',-1);
+        }
     }
 
 

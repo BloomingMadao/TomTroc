@@ -5,7 +5,6 @@ class BooksController
 
     public function showHome(): void
     {
-
         $bookManager = new BookManager();
         $books = $bookManager->getLastBookCreate(); //getLastBooks() les 5 derniers livres ajoutés
 

@@ -12,6 +12,7 @@ class ConversationsController
         $userManager = new UserManager();
 
         $conversations = $conversationManager->getAllConversationsByUserId($idUser);
+        $unreadCounts = $messageManager->getUnreadCountsByConversationForUser($idUser);
         $conversationsList = [];
         foreach ($conversations as $conversation) {
             $otherUser = $userManager->getUserDetailById($conversation->getOtherUserId($idUser));
@@ -19,7 +20,8 @@ class ConversationsController
             $conversationsList[] = [
                 'conversation' => $conversation,
                 'otherUser' => $otherUser,
-                'lastMessage' => $lastMessage
+                'lastMessage' => $lastMessage,
+                'isUnread' => !empty($unreadCounts[$conversation->getId()])
             ];
         }
 
@@ -37,9 +39,13 @@ class ConversationsController
                 $selectedConversation &&
                 ($selectedConversation->getIdUser1() === $idUser || $selectedConversation->getIdUser2() === $idUser)
             ) {
+                $messageManager->markMessagesAsRead($selectedConversation->getId(), $idUser);
                 $messages = $messageManager->getAllMessagesByConversationId($selectedConversation->getId());
                 $otherUser = $userManager->getUserPublicDetailById($selectedConversation->getOtherUserId($idUser));
                 $currentUser = $userManager->getUserPublicDetailById($idUser);
+
+                // Le compteur global (badge navbar) doit refléter la baisse immédiatement.
+                MessagesController::refreshUnreadCount($idUser);
             } else {
                 $selectedConversation = null;
             }
