@@ -12,10 +12,14 @@
             <img class="round" src="<?= $userInfo->getUrlImg(); ?>" alt="">
         </div>
         <hr>
-        <h3><?= $userInfo->getUsername(); ?></h3>
+        <h3 class="username"><?= $userInfo->getUsername(); ?></h3>
         <span class="label">BIBLIOTHÈQUE</span>
-        <img src="src/img/config/books.svg" alt="logo livre"><p class="bookCount"><?= count($books); ?> <?= count($books) > 1 ? 'livres' : 'livre'?></p>
+        <div class="numberBook">
+            <img src="src/img/config/books.svg" alt="logo livre">
+            <p class="bookCount"><?= count($books); ?> <?= count($books) > 1 ? 'livres' : 'livre' ?></p>
+        </div>
         <a href="index.php?action=startConversation&id=<?= $userInfo->getId(); ?>" class='btn-secondary'>Envoyer un message</a>
+
     </div>
 
     <div class="bookList">

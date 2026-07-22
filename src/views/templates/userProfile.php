@@ -34,7 +34,10 @@ $success = Utils::request('success');
 
                 <h3 class="username"><?= $userInfo->getUsername(); ?></h3>
                 <span class="label">BIBLIOTHÈQUE</span>
-                <p><img src="src/img/config/books.svg" alt="logo livre"><?= count($books); ?> livres</p>
+                <div class="numberBook">
+                    <img src="src/img/config/books.svg" alt="logo livre">
+                    <p class="bookCount"><?= count($books); ?> <?= count($books) > 1 ? 'livres' : 'livre' ?></p>
+                </div>
 
             </div>
 
@@ -50,7 +53,7 @@ $success = Utils::request('success');
                         <label for="mail">Adresse email</label>
                         <input type="text" name="mail" id="mail" value="<?= $userInfo->getMail(); ?>">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password" value="<?= $userInfo->getPassword(); ?>"autocomplete="current-password">
+                        <input type="password" name="password" id="password">
                         <button class="btn-secondary">Enregistrer</button>
                     </div>
                 </form>

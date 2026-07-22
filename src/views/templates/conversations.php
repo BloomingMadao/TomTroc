@@ -61,8 +61,7 @@
                         <?php if (!$isMine) { ?>
                             <div class="roundPublic"><img src="<?= $otherUser->getUrlImg() ?>" alt=""></div>
                         <?php } ?>
-                        <p><?= $isMine ? $currentUser->getUsername() : $otherUser->getUsername()?></p>
-                        <span class="messageDate"><?= $message->getDateCreate()->format('d.m H:i'); ?></span>
+                        <span class="messageDate"><?= $message->getDateCreate()->format('d.m.y H:i'); ?></span>
                         <p><?= $message->getMessage(); ?></p>
                     </div>
                 <?php } ?>

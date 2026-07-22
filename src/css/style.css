@@ -247,8 +247,7 @@ height: 35px;
 .round {
   width: 135px;
   height: 135px;
-  border-radius: 50%;
-  border: solid 1px #000000;
+  border-radius: 50%;;
 }
 
 .round:hover {
@@ -881,6 +880,35 @@ header {
   width: 341px;
 }
 
+.profileContent .userInfo .username{
+font-family: 'Playfair Display';
+font-weight: 400;
+font-style: 'Regular';
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+
+}
+
+.profileContent .userInfo .label{
+  font-family: 'Inter';
+  font-weight: 600;
+  font-style: 'Semi Bold';
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: 8%;
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+
+.profileContent .userInfo .numberBook{
+  display: flex;
+  flex-direction: row;
+  gap:5px;
+}
+
 .profileContent .round {
   width: 200px;
   height: 200px;
@@ -897,14 +925,6 @@ header {
   margin-bottom: 30px;
 }
 
-.profileContent .userInfo .label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #a6a6a6;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
 
 .profileContent .userInfo .bookCount {
   font-size: 15px;
@@ -983,6 +1003,34 @@ header {
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+}
+
+.userContainer .userDetail .username{
+font-family: 'Playfair Display';
+font-weight: 400;
+font-style: 'Regular';
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+
+}
+
+.userContainer .userDetail .label{
+  font-family: 'Inter';
+  font-weight: 600;
+  font-style:'semi-bold';
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: 8%;
+  text-align: center;
+}
+
+.userContainer .userDetail .numberBook{
+  display: flex;
+  flex-direction: row;
+  gap:5px;
+  
 }
 
 .userContainer .userImg label[for="img"]{
@@ -1797,6 +1845,7 @@ footer img {
     border-radius: 20px;
     padding: 20px;
     width: 100%;
+    margin-bottom: 80px;
   }
 
   .profileContent .bookList td {
