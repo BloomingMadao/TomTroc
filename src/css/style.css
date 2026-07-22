@@ -1486,6 +1486,14 @@ text-align: center;
   color: #292929;
 }
 
+/**Error Page**/
+.error{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 footer {
   display: flex;
   flex-direction: row;

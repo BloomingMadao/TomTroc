@@ -1,5 +1,7 @@
 <?php
 
+use Uri\WhatWg\UrlValidationError;
+
 require_once 'config/config.php';
 require_once 'config/autoload.php';
 
@@ -126,8 +128,10 @@ try {
 
         
         default:
-            throw new Exception("La page demandée n'existe pas.");
+            throw new Exception("La page demandée n'existe pas.",404);
     }
 } catch (Exception $e) {
-    echo "Erreur : " . $e->getMessage();
+
+        $errorView= new View('Erreur');
+        $errorView->render('errorPage',['errorMessage' => $e->getMessage(),'errorCode'=>$e->getCode()]);
 }
