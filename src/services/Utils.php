@@ -13,9 +13,15 @@ class Utils {
         exit();
     }
 
-    public static function request(string $variableName, mixed $defaultValue = null) : mixed
+    public static function request(string $variableName, mixed $defaultValue = null, bool $raw = false) : mixed
     {
-        return $_REQUEST[$variableName] ?? $defaultValue;
+        $value = $_REQUEST[$variableName] ?? $defaultValue;
+
+        if (!$raw && is_string($value)) {
+            $value = htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
+        }
+
+        return $value;
     }
 
 

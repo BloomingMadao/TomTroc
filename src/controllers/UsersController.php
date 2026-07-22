@@ -28,7 +28,7 @@ class UsersController
     {
         $username = Utils::request("username");
         $mail = Utils::request("mail");
-        $password = Utils::request("password");
+        $password = Utils::request("password", null, true);
 
         if (empty($username) || empty($mail) || empty($password)) {
             throw new Exception("Tous les champs sont obligatoire.");
@@ -46,7 +46,7 @@ class UsersController
     public function connectUser(): void
     {
         $mail = Utils::request('mail');
-        $password = Utils::request('password');
+        $password = Utils::request('password', null, true);
 
         if (empty($mail) || empty($password)) {
             throw new Exception("Tous les champs sont obligatoires.");
@@ -120,13 +120,20 @@ class UsersController
         $idUser = $_SESSION['idUser'];
         $username = Utils::request("username");
         $mail = Utils::request("mail");
-        $password = Utils::request("password");
-        $hash = "";
-        if (isset($password) && $password !="") {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-        }
-        $user = new User($idUser, $username, $mail, $hash, '');
+        $password = Utils::request("password", null, true);
+
         $userManager = new UserManager();
+
+        if (!empty($password)) {
+            // Un nouveau mot de passe a été saisi : on le hash.
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+        } else {
+            // Aucun mot de passe saisi : on conserve le hash actuel pour ne pas l'écraser.
+            $currentUser = $userManager->getUserDetailById($idUser);
+            $hash = $currentUser->getPassword();
+        }
+
+        $user = new User($idUser, $username, $mail, $hash, '');
         $userManager->updateUser($user);
 
         Utils::redirect('userAccount', ['success' => 1, "message" => "compte utilisateur mis à jour"]);
