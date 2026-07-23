@@ -35,7 +35,7 @@
                 </select>
                 <!-- <input type="checkbox" name="isEnable" id="isEnable"   > -->
                 <input type="hidden" name="id" value="<?= $book->getId() ?>">
-                <button class="btn"><?= $book->getId() == -1 ? "Ajouter un livre" : "Modifier le livre" ?></button>
+                <button class="btn"><?= $book->getId() == -1 ? "Ajouter" : "Valider" ?></button>
             </div>
         </div>
     </form>
