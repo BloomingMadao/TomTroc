@@ -49,20 +49,20 @@ class UsersController
         $password = Utils::request('password', null, true);
 
         if (empty($mail) || empty($password)) {
-            throw new Exception("Tous les champs sont obligatoires.");
+            throw new Exception("Tous les champs sont obligatoires.",-1);
         }
 
         $userManager = new UserManager();
         $user = $userManager->getUserByMail($mail);
 
         if (!$user) {
-            throw new Exception("L'utilisateur demandé n'existe pas.");
+            throw new Exception("L'utilisateur demandé n'existe pas.",-1);
         }
 
         // On vérifie que le mot de passe est correct.
         if (!password_verify($password, $user->getPassword())) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            throw new Exception("Le mot de passe est incorrect : $hash");
+            throw new Exception("Le mot de passe est incorrect",-1);
         }
 
         $messageManager = new MessageManager();
@@ -156,7 +156,7 @@ class UsersController
             throw new Exception("L'image est trop volumineuse (5 Mo maximum).");
         }
         if (!isset($imgInfo['extension']) || !in_array(strtolower($imgInfo['extension']), $allowedExtensions)) {
-            throw new Exception("L'extension du fichier n'est pas valide : 'jpg', 'jpeg', 'png'.");
+            throw new Exception("L'extension du fichier n'est pas valide : 'jpg', 'jpeg', 'png'.",-1);
         }
 
         $basePath='src/img/' . $idUser . '/';

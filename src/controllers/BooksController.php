@@ -34,6 +34,9 @@ class BooksController
 
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($id);
+        if(!$book){
+            throw new Exception("Le livre n'a pas été retrouvé",-1);
+        }
 
         $userManager = new UserManager();
         $user = $userManager->getUserPublicDetailById($book->getIdUser());
@@ -74,7 +77,7 @@ class BooksController
         UsersController::checkIfUserIsConnected();
         $id = Utils::request("id");
         $title = Utils::request("title");
-        $idUser = Utils::request("idUser");
+        $idUser = $_SESSION["idUser"];
         $author = Utils::request("author");
         $resume = Utils::request("resume");
         $isEnable = Utils::request("isEnable");
